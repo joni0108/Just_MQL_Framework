@@ -4,8 +4,8 @@
 class CAccount
   {
 public:
-                     CAccount(void);
-                    ~CAccount(void);
+                     CAccount(void) {}
+                    ~CAccount(void) {}
    long               GetLogin();                        //Account Login
    long               GetLeverage();                     //Account Leverage
    long               GetMaxActiveOrders();              //Maximum amount of active orders
