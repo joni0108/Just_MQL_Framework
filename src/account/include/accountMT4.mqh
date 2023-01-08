@@ -4,11 +4,11 @@
 class CAccount
   {
 public:
-                     CAccount(void);
-                    ~CAccount(void);
-   int               GetLogin();                         //Account Login
-   int               GetLeverage();                      //Account Leverage
-   int               GetMaxActiveOrders();               //Maximum amount of active orders
+                     CAccount(void) {}
+                    ~CAccount(void) {}
+   long              GetLogin();                         //Account Login
+   long              GetLeverage();                      //Account Leverage
+   long              GetMaxActiveOrders();               //Maximum amount of active orders
    bool              IsTradingAllowed();                 //Is trading allowed in the account?
    bool              IsTradeExpert();                    //Is allowed the automated trading for the account?
    double            GetBalance();                       //The balance of the account
@@ -29,7 +29,7 @@ public:
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-int CAccount::GetLogin(void)
+long CAccount::GetLogin(void)
   {
    return AccountInfoInteger(ACCOUNT_LOGIN);
   }
@@ -37,7 +37,7 @@ int CAccount::GetLogin(void)
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-int CAccount::GetLeverage(void)
+long CAccount::GetLeverage(void)
   {
    return AccountInfoInteger(ACCOUNT_LEVERAGE);
   }
@@ -45,7 +45,7 @@ int CAccount::GetLeverage(void)
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-int CAccount::GetMaxActiveOrders(void)
+long CAccount::GetMaxActiveOrders(void)
   {
    return AccountInfoInteger(ACCOUNT_LIMIT_ORDERS);
   }
