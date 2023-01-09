@@ -1,5 +1,5 @@
 #include "src/NewOrder.mqh"
-#include "src/OneClickTrading.mqh"
+#include "src/AutoTrading.mqh"
 #include "src/KeyPressed.mqh"
 
 #define MARKET_BUY 0
@@ -33,14 +33,14 @@ public:
 
    public:
 
-      class OneClick
+      /*class OneClick
         {
 
       public:
          void           Lots(double lots) {OCT.SetLots(lots);}    //Set the OneClickTrading window lots input to a value
          void           Buy() {OCT.ClickBuy();}              //Click the OneClickTrading Window Buy button
          void           Sell() {OCT.ClickSell();}            //Click the OneClickTrading Window Sell button
-        } OneClick;
+        } OneClick;*/
 
       class NewOrder
         {
