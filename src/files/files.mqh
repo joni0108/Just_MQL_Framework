@@ -12,3 +12,4 @@
 #property link      "http://www.justup.us"
 
 #include "include/base_txt.mqh"
+#include "include/base_logs.mqh"
