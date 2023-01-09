@@ -1,19 +1,20 @@
 //+---------------------------------------------------------------------+
-//|                                                            Main.mqh |
+//|                                                        Terminal.mqh |
 //|                             Copyright 2022-2025, Just Up Coding LLC |
 //|                                                http://www.justup.us |
 //+---------------------------------------------------------------------+
 //+---------------------------------------------------------------------+
-//| <Main Framework Code>                                               |
-//| Usage: Import this file to import the whole framework               |
+//| CTerminal                                                           |
+//| Usage: Control the metatrader terminal                              |
 //|                                                                     |
 //+---------------------------------------------------------------------+
 #property copyright "Copyright 2022-2025, Just Up Coding LLC"
 #property link      "http://www.justup.us"
-#property version   "1.0"
 
-//+---------------------------------------------------------------------+
-#include "/src/account/account.mqh"
-#include "src/files/files.mqh"
-#include "src/ticks/ticks.mqh"
-#include "src/terminal/terminal.mqh"
+#ifdef __MQL4__
+    #include "include/terminalMT4.mqh"
+#endif
+
+#ifdef __MQL5__
+    #include "include/terminalMT5.mqh"
+#endif

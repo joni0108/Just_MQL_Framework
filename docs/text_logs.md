@@ -1,4 +1,4 @@
-# CAccount class
+# CLogs class
 This class will help you handle log files with a predefined format, adding logs to the file with just a single line. <br>
 
 ## Usage
