@@ -56,8 +56,6 @@ public:
    class CHART
      {
    public:
-                     CHART(void) {}
-                    ~CHART(void) {}
       string         GetKeyPressed(const int lparam)
         {
          return GK.GetKey(lparam);
