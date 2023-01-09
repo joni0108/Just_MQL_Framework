@@ -14,6 +14,7 @@ This framework has the following classes:
 - [CAccount](https://github.com/justupcorp/Just_MQL_Framework/wiki/CAccount) - To get all the account information
 - [CTextFiles](https://github.com/justupcorp/Just_MQL_Framework/wiki/CTextFile) - To handle text files on a very easy way
 - [CLogs](https://github.com/justupcorp/Just_MQL_Framework/wiki/CLogs) - To handle logs files with a predefined format
+- [CTicks](https://github.com/justupcorp/Just_MQL_Framework/wiki/CTicks) - To handle the candles values
 
 The wiki is currently being made, please, be patient.
 
@@ -25,7 +26,6 @@ If you want to collaborate directly with the project, please, feel free to reach
 - [@justupcorp](https://www.github.com/justupcorp)
 
 # TODO
-- Add `CPrice class` to handling candlesticks and ticks (like Ask(), Bid(), etc)
 - Add `CError class` to handle MQL4 & MQL5 error descriptions
 - Add `CTerminal class` to handle terminal buttons & windows handling
 - Add `CLogo class` to handle a logo in the chart

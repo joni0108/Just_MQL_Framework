@@ -8,7 +8,6 @@ This class will help you handle files, it is a big extension of the CFile built-
 //Creatin a class object
 CTextFile myFile;
 
-//Use the predefined class name 'Account'
 int OnInit()
 {
     myFile.Constructor("myFileName");
