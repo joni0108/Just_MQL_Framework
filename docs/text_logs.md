@@ -8,7 +8,6 @@ This class will help you handle log files with a predefined format, adding logs 
 //Creatin a class object
 CLogs logsFile;
 
-//Use the predefined class name 'Account'
 int OnInit()
 {
     logsFile.Constructor("myFileName");
