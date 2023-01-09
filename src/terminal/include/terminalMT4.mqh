@@ -1,9 +1,3 @@
-//+------------------------------------------------------------------+
-//|                                                      ProjectName |
-//|                                      Copyright 2018, CompanyName |
-//|                                       http://www.companyname.net |
-//+------------------------------------------------------------------+
-#include "src/AutoTrading.mqh"
 #include "src/NewOrder.mqh"
 #include "src/OneClickTrading.mqh"
 #include "src/KeyPressed.mqh"
