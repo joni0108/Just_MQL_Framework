@@ -25,6 +25,7 @@ If you want to collaborate directly with the project, please, feel free to reach
 
 ## Colaborators List
 - [@justupcorp](https://www.github.com/justupcorp)
+- [@JoniGG](https://github.com/JoniGG)
 
 # TODO
 - Add `CError class` to handle MQL4 & MQL5 error descriptions
