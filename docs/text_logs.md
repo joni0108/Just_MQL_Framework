@@ -1,5 +1,5 @@
 # CAccount class
-This class will help you handling logs files with a predefined format, adding logs to the file with just a single line. <br>
+This class will help you handle log files with a predefined format, adding logs to the file with just a single line. <br>
 
 ## Usage
 ```cpp
@@ -24,8 +24,8 @@ int OnInit()
 void              Constructor(string name, string path = NULL, bool commonFlag = false);  //Class Constructor, call it in the OnInit()
 void              Add(string details, LOG_TYPE type, int errorCode = 0);                  //Add a log to the file
 void              Initialize();                                                           //Add the initialization line
-void              Unitialize();                                                           //Add the uninitialization line
+void              Unitialize();                                                           //Add the deinitialization line
 ```
 
 ## Notes
-You must call the non-defualt class constructor in the `OnInit()` or `OnStart` function before using the rest of the class methods. Use `<objName>.Constructor(<parameters>);` for doing that.
+You must call the non-default class constructor in the `OnInit()` or `OnStart` function before using the rest of the class methods. Use `<objName>.Constructor(<parameters>);` for doing that.

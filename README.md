@@ -12,6 +12,8 @@ A cross-language framework that allows you to code your scripts and EAs only onc
 ## Usage
 This framework has the following classes:
 - [CAccount](https://github.com/justupcorp/Just_MQL_Framework/wiki/CAccount) - To get all the account information
+- [CTextFiles](https://github.com/justupcorp/Just_MQL_Framework/wiki/CTextFile) - To handle text files on a very easy way
+- [CLogs](https://github.com/justupcorp/Just_MQL_Framework/wiki/CLogs) - To handle logs files with a predefined format
 
 The wiki is currently being made, please, be patient.
 

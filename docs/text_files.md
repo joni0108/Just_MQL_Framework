@@ -1,5 +1,5 @@
 # CAccount class
-This class will help you handling files, it is a big extension of the CFile built-in class <br>
+This class will help you handle files, it is a big extension of the CFile built-in class <br>
 
 ## Usage
 ```cpp
@@ -22,7 +22,7 @@ int OnInit()
         Print(myFile.ReadLine(i + 1));
     }
 
-    //Second way, by accesing the array
+    //Second way, is by accessing the array
     myFile.ReadFull();
 
     for(int i = 0; i < myFile.CountLines(), i++)
@@ -53,8 +53,8 @@ int OnInit()
    string            GetFileExtension() { return m_fileExtension; }                          //Return the file extension
    string            GetFullPath() { return m_filePath + m_fileName + m_fileExtension; }     //Return the full path
    bool              IsCommon() { return m_inCommonFolder; }                                 //Return if the file is in the common folder or not
-   string            FullFileLines[];                                                        //Is an array with all the document lines. ReadFull() must be called before to update the lines.
+   string            FullFileLines[];                                                        //Is an array with all the document lines. ReadFull() must be called before updating the lines.
 ```
 
 ## Notes
-You must call the non-defualt class constructor in the `OnInit()` or `OnStart` function before using the rest of the class methods. Use `<objName>.Constructor(<parameters>);` for doing that.
+You must call the non-default class constructor in the `OnInit()` or `OnStart` function before using the rest of the class methods. Use `<objName>.Constructor(<parameters>);` for doing that.
