@@ -23,3 +23,11 @@ If you want to collaborate directly with the project, please, feel free to reach
 
 ## Colaborators List
 - [@justupcorp](https://www.github.com/justupcorp)
+
+# TODO
+- Add `CPrice class` to handling candlesticks and ticks (like Ask(), Bid(), etc)
+- Add `CError class` to handle MQL4 & MQL5 error descriptions
+- Add `CTerminal class` to handle terminal buttons & windows handling
+- Add `CLogo class` to handle a logo in the chart
+- Add `CTrading class` to handle operations and others in both languages
+- Add `CIndicators class` to handle most of the built-in indicators in a very easy way.
