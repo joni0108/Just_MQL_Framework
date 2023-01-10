@@ -5,6 +5,7 @@
 //+------------------------------------------------------------------+
 #include "../../base/definitions.mqh"
 #include <Trade/Trade.mqh>
+#include "src/MT4Orders.mqh"
 
 /*
    SELECT METHODS:
@@ -560,36 +561,21 @@ void CTrading::_FillSelected(ulong ticket)
   {
    _FreeSelected();
 
-   PositionSelectByTicket(ticket);
+   if(!OrderSelect(ticket,SELECT_BY_TICKET))
+      return;
+    
+   _openPrice = OrderOpenPrice();
+   _openTime = OrderOpenTime();
+   _closeTime = OrderCloseTime();
+   _closePrice = OrderClosePrice();
+   _sl = OrderStopLoss();
+   _tp = OrderTakeProfit();
+   _magicNumber = OrderMagicNumber();
+   _lots = OrderLots();
+   _comment = OrderComment();
+   _type = OrderType();
+   _symbol = OrderSymbol();
 
-   if(_GetCloseTime(ticket) == 0)
-     {
-      _openPrice = PositionGetDouble(POSITION_PRICE_OPEN);
-      _openTime = (datetime)PositionGetInteger(POSITION_TIME);
-      _closeTime = _GetCloseTime(ticket);
-      _closePrice = HistoryDealGetDouble(ticket,DEAL_PRICE);
-      _sl = PositionGetDouble(POSITION_SL);
-      _tp = PositionGetDouble(POSITION_TP);
-      _magicNumber = PositionGetInteger(POSITION_MAGIC);
-      _lots = PositionGetDouble(POSITION_VOLUME);
-      _comment = PositionGetString(POSITION_COMMENT);
-      _type = PositionGetInteger(POSITION_TYPE);
-      _symbol = PositionGetString(POSITION_SYMBOL);
-     }
-   else
-     {
-      _openPrice = HistoryOrderGetDouble(ticket,ORDER_PRICE_OPEN);
-      _openTime = (datetime)HistoryOrderGetInteger(ticket, ORDER_TIME_DONE);
-      _closeTime = _GetCloseTime(ticket);
-      _closePrice = HistoryDealGetDouble(ticket,DEAL_PRICE);
-      _sl = HistoryOrderGetDouble(ticket, ORDER_SL);
-      _tp = HistoryOrderGetDouble(ticket,ORDER_TP);
-      _magicNumber = HistoryOrderGetInteger(ticket,ORDER_MAGIC);
-      _lots = HistoryOrderGetDouble(ticket,ORDER_VOLUME_INITIAL);
-      _comment = HistoryOrderGetString(ticket,ORDER_COMMENT);
-      _type = HistoryOrderGetInteger(ticket,ORDER_TYPE);
-      _symbol = HistoryOrderGetString(ticket,ORDER_SYMBOL);
-     }
 
    _ticket = ticket;
   }
