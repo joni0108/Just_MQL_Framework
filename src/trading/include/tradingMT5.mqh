@@ -64,7 +64,7 @@ private:
    void              _FillSelected(ulong ticket); //Fill the selected data with the selected order
    datetime          _GetCloseTime(ulong ticket);  //Get the close time of a position
    CTrade            trade;
-   
+
 
 public:
    //SETTERS
@@ -294,11 +294,17 @@ int CTrading::TradesTotal(int pool=POOL_MAIN)
             return -1;
   }
 
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 bool CTrading::Buy(double volume,string symbol="SYMBOL",double price=0.000000,double sl=0.000000,double tp=0.000000,string comment="")
-{
+  {
+   trade.SetExpertMagicNumber(_magic);
+   trade.SetDeviationInPoints(_deviation);
+
    if(symbol == SYMBOL)
       symbol = Symbol();
-   
+
    _request_volume = volume;
    _request_deviation = _deviation;
    _request_magic = _magic;
@@ -309,22 +315,28 @@ bool CTrading::Buy(double volume,string symbol="SYMBOL",double price=0.000000,do
    _request_type = MARKET_BUY;
    _request_type_description = "MARKET_BUY";
    _request_volume = volume;
-   
+
    trade.Buy(volume,symbol, price, sl, tp, comment);
-   
+
    _result_order = trade.ResultOrder();
    _result_price = trade.ResultPrice();
    _result_volume = trade.ResultVolume();
    _request_price = _result_price;
-   
-   return true;
-}
 
+   return true;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 bool CTrading::Sell(double volume,string symbol="SYMBOL",double price=0.000000,double sl=0.000000,double tp=0.000000,string comment="")
-{
+  {
+   trade.SetExpertMagicNumber(_magic);
+   trade.SetDeviationInPoints(_deviation);
+
    if(symbol == SYMBOL)
       symbol = Symbol();
-   
+
    _request_volume = volume;
    _request_deviation = _deviation;
    _request_magic = _magic;
@@ -335,23 +347,29 @@ bool CTrading::Sell(double volume,string symbol="SYMBOL",double price=0.000000,d
    _request_type = MARKET_SELL;
    _request_type_description = "MARKET_SELL";
    _request_volume = volume;
-   
+
    if(!trade.Sell(volume,symbol, price, sl, tp, comment))
       return false;
-   
+
    _result_order = trade.ResultOrder();
    _result_price = trade.ResultPrice();
    _result_volume = trade.ResultVolume();
    _request_price = _result_price;
-   
-   return true;
-}
 
+   return true;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 bool CTrading::BuyLimit(double volume,double price,string symbol="SYMBOL",double sl=0.000000,double tp=0.000000,datetime expiration=0,string comment="")
-{
+  {
+   trade.SetExpertMagicNumber(_magic);
+   trade.SetDeviationInPoints(_deviation);
+
    if(symbol == SYMBOL)
       symbol = Symbol();
-   
+
    _request_volume = volume;
    _request_deviation = _deviation;
    _request_magic = _magic;
@@ -362,23 +380,29 @@ bool CTrading::BuyLimit(double volume,double price,string symbol="SYMBOL",double
    _request_type = BUY_LIMIT;
    _request_type_description = "BUY_LIMIT";
    _request_volume = volume;
-   
+
    if(!trade.BuyLimit(volume,price,symbol,sl,tp,ORDER_TIME_DAY,expiration,comment))
       return false;
-   
+
    _result_order = trade.ResultOrder();
    _result_price = trade.ResultPrice();
    _result_volume = trade.ResultVolume();
    _request_price = _result_price;
-   
-   return true;
-}
 
+   return true;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 bool CTrading::SellLimit(double volume,double price,string symbol="SYMBOL",double sl=0.000000,double tp=0.000000,datetime expiration=0,string comment="")
-{
+  {
+   trade.SetExpertMagicNumber(_magic);
+   trade.SetDeviationInPoints(_deviation);
+
    if(symbol == SYMBOL)
       symbol = Symbol();
-   
+
    _request_volume = volume;
    _request_deviation = _deviation;
    _request_magic = _magic;
@@ -389,23 +413,29 @@ bool CTrading::SellLimit(double volume,double price,string symbol="SYMBOL",doubl
    _request_type = SELL_LIMIT;
    _request_type_description = "SELL_LIMIT";
    _request_volume = volume;
-   
+
    if(!trade.SellLimit(volume,price,symbol,sl,tp,ORDER_TIME_DAY,expiration,comment))
       return false;
-   
+
    _result_order = trade.ResultOrder();
    _result_price = trade.ResultPrice();
    _result_volume = trade.ResultVolume();
    _request_price = _result_price;
-   
-   return true;
-}
 
+   return true;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 bool CTrading::BuyStop(double volume,double price,string symbol="SYMBOL",double sl=0.000000,double tp=0.000000,datetime expiration=0,string comment="")
-{
+  {
+   trade.SetExpertMagicNumber(_magic);
+   trade.SetDeviationInPoints(_deviation);
+
    if(symbol == SYMBOL)
       symbol = Symbol();
-   
+
    _request_volume = volume;
    _request_deviation = _deviation;
    _request_magic = _magic;
@@ -416,23 +446,29 @@ bool CTrading::BuyStop(double volume,double price,string symbol="SYMBOL",double 
    _request_type = BUY_STOP;
    _request_type_description = "BUY_STOP";
    _request_volume = volume;
-   
+
    if(!trade.BuyStop(volume,price,symbol,sl,tp,ORDER_TIME_DAY,expiration,comment))
       return false;
-   
+
    _result_order = trade.ResultOrder();
    _result_price = trade.ResultPrice();
    _result_volume = trade.ResultVolume();
    _request_price = _result_price;
-   
-   return true;
-}
 
+   return true;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 bool CTrading::SellStop(double volume,double price,string symbol="SYMBOL",double sl=0.000000,double tp=0.000000,datetime expiration=0,string comment="")
-{
+  {
+   trade.SetExpertMagicNumber(_magic);
+   trade.SetDeviationInPoints(_deviation);
+
    if(symbol == SYMBOL)
       symbol = Symbol();
-   
+
    _request_volume = volume;
    _request_deviation = _deviation;
    _request_magic = _magic;
@@ -443,81 +479,103 @@ bool CTrading::SellStop(double volume,double price,string symbol="SYMBOL",double
    _request_type = SELL_STOP;
    _request_type_description = "SELL_STOP";
    _request_volume = volume;
-   
+
    if(!trade.SellStop(volume,price,symbol,sl,tp,ORDER_TIME_DAY,expiration,comment))
       return false;
-   
+
    _result_order = trade.ResultOrder();
    _result_price = trade.ResultPrice();
    _result_volume = trade.ResultVolume();
    _request_price = _result_price;
-   
-   return true;
-}
 
+   return true;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 bool CTrading::PositionModify(int ticket,double sl,double tp)
-{
+  {
    if(!trade.PositionModify(ticket,sl,tp))
       return false;
-      
+
    _request_sl = sl;
    _request_tp = tp;
-   
-   return true;
-}
 
+   return true;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 bool CTrading::PositionClose(int ticket,int deviation=-1)
-{
+  {
+   trade.SetDeviationInPoints(_deviation);
+
    if(!trade.PositionClose(ticket,deviation))
       return false;
-   
-   return true;
-}
 
+   return true;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 bool CTrading::PositionClosePartial(int ticket,double volume,int deviation=-1)
-{
+  {
+   trade.SetDeviationInPoints(_deviation);
+
    if(!trade.PositionClosePartial(ticket, volume, deviation))
       return false;
-      
-   return true;
-}
 
+   return true;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 bool CTrading::ModifyOrder(int ticket,double price,double sl,double tp,datetime expiration=0)
-{
+  {
    if(!trade.OrderModify(ticket,price,sl,tp,ORDER_TIME_DAY,expiration))
       return false;
-   
-   return true;
-}
 
+   return true;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 bool CTrading::DeleteOrder(int ticket)
-{
+  {
    if(!trade.OrderDelete(ticket))
       return false;
-   
-   return true;
-}
 
+   return true;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
 void CTrading::_FillSelected(ulong ticket)
-{
+  {
    _FreeSelected();
-   
+
    PositionSelectByTicket(ticket);
-   
+
    if(_GetCloseTime(ticket) == 0)
-   {
-   _openPrice = PositionGetDouble(POSITION_PRICE_OPEN);
-   _openTime = (datetime)PositionGetInteger(POSITION_TIME);
-   _closeTime = _GetCloseTime(ticket);
-   _closePrice = HistoryDealGetDouble(ticket,DEAL_PRICE);
-   _sl = PositionGetDouble(POSITION_SL);
-   _tp = PositionGetDouble(POSITION_TP);
-   _magicNumber = PositionGetInteger(POSITION_MAGIC);
-   _lots = PositionGetDouble(POSITION_VOLUME);
-   _comment = PositionGetString(POSITION_COMMENT);
-   _type = PositionGetInteger(POSITION_TYPE);
-   _symbol = PositionGetString(POSITION_SYMBOL);
-   }
+     {
+      _openPrice = PositionGetDouble(POSITION_PRICE_OPEN);
+      _openTime = (datetime)PositionGetInteger(POSITION_TIME);
+      _closeTime = _GetCloseTime(ticket);
+      _closePrice = HistoryDealGetDouble(ticket,DEAL_PRICE);
+      _sl = PositionGetDouble(POSITION_SL);
+      _tp = PositionGetDouble(POSITION_TP);
+      _magicNumber = PositionGetInteger(POSITION_MAGIC);
+      _lots = PositionGetDouble(POSITION_VOLUME);
+      _comment = PositionGetString(POSITION_COMMENT);
+      _type = PositionGetInteger(POSITION_TYPE);
+      _symbol = PositionGetString(POSITION_SYMBOL);
+     }
    else
      {
       _openPrice = HistoryOrderGetDouble(ticket,ORDER_PRICE_OPEN);
@@ -534,4 +592,5 @@ void CTrading::_FillSelected(ulong ticket)
      }
 
    _ticket = ticket;
-}
+  }
+//+------------------------------------------------------------------+
