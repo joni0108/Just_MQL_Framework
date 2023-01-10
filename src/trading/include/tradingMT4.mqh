@@ -184,7 +184,6 @@ bool CTrading::Select(int index,int selectMethod = BY_INDEX, int pool = POOL_MAI
 
       else
          if(pool == POOL_HISTORY)
-           {
               {
                bool res = OrderSelect(index,SELECT_BY_POS,MODE_HISTORY);
 
@@ -196,7 +195,6 @@ bool CTrading::Select(int index,int selectMethod = BY_INDEX, int pool = POOL_MAI
                
                return res;
               }
-           }
 
          else
             return false;
