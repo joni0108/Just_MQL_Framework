@@ -17,3 +17,4 @@
 #include "src/files/files.mqh"
 #include "src/ticks/ticks.mqh"
 #include "src/terminal/terminal.mqh"
+#include "src/trading/trading.mqh"

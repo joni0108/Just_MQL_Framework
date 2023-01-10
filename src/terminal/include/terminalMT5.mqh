@@ -1,13 +1,7 @@
 #include "src5/AutoTrading.mqh"
 #include "src5/NewOrder.mqh"
 #include "src5/KeyPressed.mqh"
-
-#define MARKET_BUY 0
-#define MARKET_SELL 1
-#define BUY_LIMIT 2
-#define SELL_LIMIT 3
-#define BUY_STOP 4
-#define SELL_STOP 5
+#include "../../base/definitions.mqh"
 
 //+------------------------------------------------------------------+
 //|                                                                  |
