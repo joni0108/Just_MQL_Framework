@@ -124,6 +124,7 @@ public:
    double            GetLots() {return _lots;}              //Get the selected trade lot size
    datetime          GetOpenTime() {return _openTime;}      //Get the selected trade open time
    datetime          GetCloseTime() {return _closeTime;}    //Get the selected trade close time
+   ulong             GetTicket() {return _ticket;}          //Get the selected trade ticket
 
   } Trading;
 //+------------------------------------------------------------------+
