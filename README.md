@@ -16,6 +16,7 @@ This framework has the following classes:
 - [CLogs](https://github.com/justupcorp/Just_MQL_Framework/wiki/CLogs) - To handle logs files with a predefined format
 - [CTicks](https://github.com/justupcorp/Just_MQL_Framework/wiki/CTicks) - To handle the candles values
 - [CTerminal](https://github.com/justupcorp/Just_MQL_Framework/wiki/CTerminal) - To control the Metatrader terminal buttons
+- [CTrading](https://github.com/justupcorp/Just_MQL_Framework/wiki/CTrading) - To handle and control all the trading activities
 
 The wiki is currently being made, please, be patient.
 
@@ -30,5 +31,4 @@ If you want to collaborate directly with the project, please, feel free to reach
 # TODO
 - Add `CError class` to handle MQL4 & MQL5 error descriptions
 - Add `CLogo class` to handle a logo in the chart
-- Add `CTrading class` to handle operations and others in both languages
 - Add `CIndicators class` to handle most of the built-in indicators in a very easy way.
