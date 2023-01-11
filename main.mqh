@@ -10,7 +10,7 @@
 //+---------------------------------------------------------------------+
 #property copyright "Copyright 2022-2025, Just Up Coding LLC"
 #property link      "http://www.justup.us"
-#property version   "1.0"
+#property version   "1.1"
 
 //+---------------------------------------------------------------------+
 #include "/src/account/account.mqh"

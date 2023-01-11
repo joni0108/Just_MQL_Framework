@@ -2,6 +2,7 @@
 #include "src5/NewOrder.mqh"
 #include "src5/KeyPressed.mqh"
 #include "../../base/definitions.mqh"
+#include "../../error/error.mqh"
 
 //+------------------------------------------------------------------+
 //|                                                                  |
@@ -24,15 +25,6 @@ public:
      {
 
    public:
-
-      /*class OneClick
-        {
-
-      public:
-         void           Lots(double lots) {OCT.SetLots(lots);}    //Set the OneClickTrading window lots input to a value
-         void           Buy() {OCT.ClickBuy();}              //Click the OneClickTrading Window Buy button
-         void           Sell() {OCT.ClickSell();}            //Click the OneClickTrading Window Sell button
-        } OneClick;*/
 
       class NewOrder
         {

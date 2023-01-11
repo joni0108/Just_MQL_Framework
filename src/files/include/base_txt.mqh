@@ -1,3 +1,5 @@
+#include "../../error/error.mqh"
+
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
@@ -192,6 +194,12 @@ string CTextFile::ReadLine(int lineNum)
    string fullPath = m_filePath + m_fileName + m_fileExtension;
    string text = "";
 
+   if(lineNum < 1 || lineNum > CountLines() + 1)
+     {
+        Error._SetLast(20001);
+        return text;
+     }
+
    if(m_inCommonFolder)
      {
       fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT | FILE_COMMON);
@@ -253,6 +261,13 @@ bool CTextFile::DeleteLine(int lineNum)
    string fullPath = m_filePath + m_fileName + m_fileExtension;
    int controller = 1;
    CTextFile tempFile;
+
+    if(lineNum < 1 || lineNum > CountLines() + 1)
+     {
+        Error._SetLast(20001);
+        return false;
+     }
+
    tempFile.Constructor(m_fileName + "_temp", m_filePath, m_inCommonFolder);
 
    while(controller <= CountLines())
