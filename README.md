@@ -1,6 +1,5 @@
 # Just_MQL_Framework
-![GitHub](https://img.shields.io/github/license/jiowcl/MQL-CopyTrade.svg)
-![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/dingmaotu/mql-zmq.svg)
+![GitHub](https://img.shields.io/github/license/justupcorp/Just_MQL_Framework?color=blue)
 ![Repository Last Release](https://img.shields.io/github/v/release/justupcorp/Just_MQL_Framework?color=light_green)
 <br>
 A cross-language framework that allows you to code your scripts and EAs only once and use it on both MT4 &amp; MT5. <br>
