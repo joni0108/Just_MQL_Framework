@@ -1,5 +1,6 @@
 # Just_MQL_Framework
-A cross-language framework that allows you to code your scripts and EAs only once and use it on both MT4 &amp; MT5.
+A cross-language framework that allows you to code your scripts and EAs only once and use it on both MT4 &amp; MT5. <br>
+Inspired in [MQL_Easy](https://github.com/Denn1Ro/MQL_Easy) framework.
 
 # Installation
 1. Download/clone the repository into your `MQL4/Include` and `MQL5/Include` folders.
