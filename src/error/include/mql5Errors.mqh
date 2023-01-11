@@ -194,7 +194,7 @@ string _ErrorDescr(int errorCodePar)
      }
 //---
    if(errorStr=="unknown error")
-      errorStr= _RetcodeDescr(retcodePar);
+      errorStr= _RetcodeDescr(errorCodePar);
    
    return(errorStr);
   } 

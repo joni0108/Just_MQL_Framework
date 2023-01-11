@@ -62,5 +62,5 @@ string CError::GetLastDescription(bool framework = false)
     if(framework)
         return _FrameworkErr(lastError);
     else
-        return ErrorDescription(GetLast());
+        return _ErrorDescr(GetLast());
   }
