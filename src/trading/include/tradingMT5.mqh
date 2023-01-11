@@ -181,7 +181,10 @@ bool CTrading::Select(int index,int selectMethod=0,int pool=0)
      {
       if(pool == POOL_MAIN)
         {
-         ulong ticket = PositionGetTicket(index);
+         if(!OrderSelect(index, SELECT_BY_POS))
+            return false;
+            
+         ulong ticket = OrderTicket();
 
          if(ticket == 0)
             return false;
@@ -199,8 +202,11 @@ bool CTrading::Select(int index,int selectMethod=0,int pool=0)
       else
          if(pool == POOL_HISTORY)
            {
-            ulong ticket = PositionGetTicket(index);
-
+            if(!OrderSelect(index, SELECT_BY_POS))
+            return false;
+            
+            ulong ticket = OrderTicket();
+            
             if(ticket == 0)
                return false;
 
@@ -223,7 +229,7 @@ bool CTrading::Select(int index,int selectMethod=0,int pool=0)
         {
          if(pool == POOL_BOTH)
            {
-            if(PositionSelectByTicket(index))
+            if(!OrderSelect(index, SELECT_BY_TICKET))
                return false;
 
             _ticket = index;
@@ -236,7 +242,7 @@ bool CTrading::Select(int index,int selectMethod=0,int pool=0)
          else
             if(pool == POOL_MAIN)
               {
-               if(PositionSelectByTicket(index))
+               if(!OrderSelect(index, SELECT_BY_TICKET))
                   return false;
 
                if(_GetCloseTime(index) != 0)
@@ -252,7 +258,7 @@ bool CTrading::Select(int index,int selectMethod=0,int pool=0)
             else
                if(pool == POOL_HISTORY)
                  {
-                  if(PositionSelectByTicket(index))
+                  if(!OrderSelect(index, SELECT_BY_TICKET))
                      return false;
 
                   if(_GetCloseTime(index) == 0)
@@ -283,7 +289,7 @@ datetime CTrading::_GetCloseTime(ulong ticket)
 int CTrading::TradesTotal(int pool=POOL_MAIN)
   {
    if(pool == POOL_MAIN)
-      return PositionsTotal();
+      return OrdersTotal();
 
    else
       if(pool == POOL_HISTORY)
@@ -291,7 +297,7 @@ int CTrading::TradesTotal(int pool=POOL_MAIN)
 
       else
          if(pool == POOL_BOTH)
-            return PositionsTotal() + HistoryOrdersTotal();
+            return OrdersTotal() + HistoryOrdersTotal();
          else
             return -1;
   }
