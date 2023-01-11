@@ -1,5 +1,5 @@
 # CError class
-This class will return all the important ticks/candle values based on a given symbol and timeframe <br>
+This class will handle the errors of MQL and framework <br>
 
 ## Usage
 ```cpp

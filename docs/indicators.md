@@ -1,5 +1,5 @@
 # CIndicators class
-This class will return the account details in both languages. <br>
+This class will handle the indicators. <br>
 
 ## Usage
 ```cpp

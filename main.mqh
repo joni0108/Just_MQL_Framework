@@ -12,6 +12,8 @@
 #property link      "http://www.justup.us"
 #property version   "1.1"
 
+#define INCLUDE_LIBRARIES
+
 //+---------------------------------------------------------------------+
 #include "/src/account/account.mqh"
 #include "src/files/files.mqh"
@@ -19,3 +21,7 @@
 #include "src/terminal/terminal.mqh"
 #include "src/trading/trading.mqh"
 #include "src/indicators/indicators.mqh"
+
+#ifdef INCLUDE_LIBRARIES
+   #include "librariesList.mqh"
+#endif 
