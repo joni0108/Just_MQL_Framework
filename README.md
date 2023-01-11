@@ -25,7 +25,15 @@ This framework has the following classes:
 - [CIndicators](https://github.com/justupcorp/Just_MQL_Framework/wiki/CIndicators) - To handle indicators in both versiones using the MQL4 structure
 - [CError](https://github.com/justupcorp/Just_MQL_Framework/wiki/CError) - To handle MQL and internal framework errors
 
-The wiki is currently being made, please, be patient.
+
+### Optional Libraries
+These libraries are not required to use the built-in MQL functions, however, it has some useful classes and methods that can help you to solve problems solved by us and other external libraries added to the framework. <br>
+If you do NOT want to load these files into your project, go to the file `main.mqh` and delete the line `#define INCLUDE_LIBRARIES`. With that all this optional libraries will not be included in your project. <br>
+
+List:
+- [CChart](https://github.com/justupcorp/Just_MQL_Framework/wiki/CChart) - To handle chart, and some useful chart objects like a logo, and a debug button during your development.
+
+_Please, be patient, some other libraries are already coded and being adapted to the framework, so will be at least an update daily with more libraries._ <br>
 
 # Contributions & Credits
 This framework may include our code and third-party code, all the credits will be listed on the respective document. <br>
