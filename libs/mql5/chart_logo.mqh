@@ -46,7 +46,7 @@ bool CLogo::Create(long chartId, ENUM_CHART_SIDE _side, string imagePath, int su
     int nameAdd = 0;
         _name = "logo_" + (string)nameAdd;
 
-        while(ObjectFind(_name) != -1)
+        while(ObjectFind(ChartID(), _name) != -1)
         {
             _name = "logo_" + (string)nameAdd;
             nameAdd++;
