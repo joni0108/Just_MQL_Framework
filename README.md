@@ -32,6 +32,7 @@ If you do NOT want to load these files into your project, go to the file `main.m
 
 List:
 - [CChart](https://github.com/justupcorp/Just_MQL_Framework/wiki/CChart) - To handle chart, and some useful chart objects like a logo, and a debug button during your development.
+- [CWebRequests](https://github.com/justupcorp/Just_MQL_Framework/wiki/CWebRequests) - To handle content on the web (currently supports discord and telegram message and media sending)
 
 _Please, be patient, some other libraries are already coded and being adapted to the framework, so will be at least an update daily with more libraries._ <br>
 
