@@ -1,7 +1,10 @@
 # CWebRequests class
-This class will help yoou handle chart actions and chart objects <br>
+This class will help handling web requests <br>
 
 ## Usage
+1- Add the following urls to your allowed Web Request addresses in your platform:
+    - https://discord.com
+    - https://api.telegram.com
 ```cpp
 #include <Just_MQL_Framework/main.mqh> //Include the framework
 
@@ -41,3 +44,6 @@ void OnChartEvent(const int id,const long& lparam,const double& dparam,const str
 
 ## Notes
 You must call the non-default class constructor in the `OnInit()` or `OnStart` function before using the rest of the class methods. Use `<objName>.Constructor(<parameters>);` for doing that.
+
+## Common Errors
+- Error 4060 - Please, make sure you have the URLs listed in the `usage` in your allowed webRequest addresses.
