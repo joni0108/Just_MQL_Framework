@@ -33,15 +33,7 @@ In this example we accidentaly added a `value` to the cell `M72` which extended 
 
 //Creating a class object
 CCSVFile file;
-
-//For this example we will create an excel with 9 rows and 4 columns.
-//For this we will use the built-in functions of MQL4 & 5
-int handle = FileOpen("test.csv", FILE_WRITE | FILE_READ | FILE_CSV | FILE_ANSI);
-
-if(handle == INVALID_HANDLE)
-    Print("Error: " + (string)GetLastError());
-
-FileWrite(handle,"col1","","","");  //ROW 1
+,"","","");  //ROW 1
 FileWrite(handle,"","","","");  //ROW 2
 FileWrite(handle,"","","","OLD");  //ROW 3
 FileWrite(handle,"","ENDLINE","","");  //ROW 4
