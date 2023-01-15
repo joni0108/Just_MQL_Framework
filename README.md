@@ -45,4 +45,5 @@ If you want to collaborate directly with the project, please, feel free to reach
 - [@JoniGG](https://github.com/JoniGG)
 
 # TODO
-Extend the framework features with other useful libraries that works in both languages
+- Add the CTime class to work with servers and local time, and with user time-zones
+- Extend the framework features with other useful libraries that works in both languages
