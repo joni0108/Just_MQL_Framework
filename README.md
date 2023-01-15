@@ -19,6 +19,7 @@ This framework has the following classes:
 - [CAccount](https://github.com/justupcorp/Just_MQL_Framework/wiki/CAccount) - To get all the account information
 - [CTextFiles](https://github.com/justupcorp/Just_MQL_Framework/wiki/CTextFile) - To handle text files on a very easy way
 - [CLogs](https://github.com/justupcorp/Just_MQL_Framework/wiki/CLogs) - To handle logs files with a predefined format
+- [CCSVFile](https://github.com/justupcorp/Just_MQL_Framework/wiki/CCSVFile) - To handle `CSV` files very easy, includes fuctions to read, modify, and find values into an specific cell using `rows & columns` coordinates system.
 - [CTicks](https://github.com/justupcorp/Just_MQL_Framework/wiki/CTicks) - To handle the candles values
 - [CTerminal](https://github.com/justupcorp/Just_MQL_Framework/wiki/CTerminal) - To control the Metatrader terminal buttons
 - [CTrading](https://github.com/justupcorp/Just_MQL_Framework/wiki/CTrading) - To handle and control all the trading activities

@@ -13,3 +13,11 @@
 
 #include "include/base_txt.mqh"
 #include "include/base_logs.mqh"
+
+#ifdef __MQL4__
+    #include "include/csvMT4.mqh"
+#endif
+
+#ifdef __MQL5__
+    #include "include/csvMT5.mqh"
+#endif
