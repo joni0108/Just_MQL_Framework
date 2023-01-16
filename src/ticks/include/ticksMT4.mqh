@@ -1,3 +1,5 @@
+#include "../../error/error.mqh"
+
 /*
     MODES:
     "OPEN" - open price

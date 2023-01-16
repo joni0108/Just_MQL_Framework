@@ -1,4 +1,4 @@
-# CAccount class
+# CTicks class
 This class will return all the important ticks/candle values based on a given symbol and timeframe <br>
 
 ## Usage

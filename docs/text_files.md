@@ -1,4 +1,4 @@
-# CAccount class
+# CTextFile class
 This class will help you handle files, it is a big extension of the CFile built-in class <br>
 
 ## Usage
