@@ -77,8 +77,8 @@ public:
 
    //MANAGE POSITIONS
    bool              PositionModify(int ticket, double sl, double tp);                                //Modify the specified position from Ticket
-   bool              PositionClose(int ticket, int deviation = ULONG_MAX);                           //Close the specified position from Ticket
-   bool              PositionClosePartial(int ticket, double volume, int deviation = ULONG_MAX);     //Close a part of the specified position from Ticket
+   bool              PositionClose(int ticket, int deviation = 0);                           //Close the specified position from Ticket
+   bool              PositionClosePartial(int ticket, double volume, int deviation = 0);     //Close a part of the specified position from Ticket
 
    //MANAGE ORDERS
    bool              ModifyOrder(int ticket, double price, double sl, double tp, datetime expiration = 0);  // Modify the specified order from Ticket
@@ -301,7 +301,7 @@ bool CTrading::Buy(double volume,string symbol="SYMBOL",double price=0.000000,do
    _request_type_description = "MARKET_BUY";
    _request_volume = volume;
 
-   int ticket = OrderSend(symbol,OP_BUY,volume,Bid,_deviation,sl,tp,comment,_magic);
+   int ticket = OrderSend(symbol,OP_BUY,volume,Ask,_deviation,sl,tp,comment,_magic);
 
    if(ticket == 0)
       return false;
@@ -338,7 +338,7 @@ bool CTrading::Sell(double volume,string symbol="SYMBOL",double price=0.000000,d
    _request_type_description = "MARKET_SELL";
    _request_volume = volume;
 
-   int ticket = OrderSend(symbol,OP_SELL,volume,Ask,_deviation,sl,tp,comment,_magic);
+   int ticket = OrderSend(symbol,OP_SELL,volume,Bid,_deviation,sl,tp,comment,_magic);
 
    if(ticket == 0)
       return false;
@@ -503,7 +503,7 @@ bool CTrading::PositionModify(int ticket,double sl,double tp)
    return true;
 }
 
-bool CTrading::PositionClose(int ticket,int deviation=-1)
+bool CTrading::PositionClose(int ticket,int deviation=0)
 {
    if(!OrderSelect(ticket,SELECT_BY_TICKET))
       return false;
@@ -511,11 +511,11 @@ bool CTrading::PositionClose(int ticket,int deviation=-1)
    bool res;
       
    if(OrderType() == OP_BUY)
-      res = OrderClose(ticket,OrderLots(),Ask,deviation);
+      res = OrderClose(ticket,OrderLots(),Bid,deviation);
    
    else
       if(OrderType() == OP_SELL)
-         res = OrderClose(ticket,OrderLots(),Bid,deviation);
+         res = OrderClose(ticket,OrderLots(),Ask,deviation);
    else
       res = false;
    
@@ -527,7 +527,7 @@ bool CTrading::PositionClose(int ticket,int deviation=-1)
    
 }
 
-bool CTrading::PositionClosePartial(int ticket,double volume,int deviation=-1)
+bool CTrading::PositionClosePartial(int ticket,double volume,int deviation=0)
 {
    if(!OrderSelect(ticket,SELECT_BY_TICKET))
       return false;
