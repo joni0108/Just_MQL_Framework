@@ -1,19 +1,19 @@
 # CCSVFile class
-This class will help you handling csv files on a very easy way <br>
+This class will help you handle CSV files on a straightforward way <br>
 
 ## Highlighted Features
-- Write data to an specific cell by its position.
-- Read data from an specific cell by its poisition.
+- Write data to a specific cell by its position.
+- Read data from a specific cell by its position.
 
 ## Understanding CSV files
 In order to avoid errors and unexpected results, please be sure to read. <br>
-For using the methods that allows you to setand get data from a cell by its position you must know the amount of columns and rows that the file does have. <br>
-A failure to provide these parameters wrong will result on wrong data returned and unexpected errors. <br>
-However, you can read data from the file without knowing these parameters, but you won't be able to use the methods that uses cell coordinates to do so.
+For using the methods that allow you to set and get data from a cell by its position you must know the number of columns and rows that the file does have. <br>
+A failure to provide these parameters wrong will result in wrong data returned and unexpected errors. <br>
+However, you can read data from the file without knowing these parameters, but you won't be able to use the methods that use cell coordinates to do so.
 
 ### How to get the columns and rows amount?
 
-- You must count columns and rows from the cell A1 to the last cell with `data != ""`, drawing a mental rectangle over the data. See the example below: <br>
+- You must count columns and rows from cell A1 to the last cell with `data != ""`, drawing a mental rectangle over the data. See the example below: <br>
 
 ![Img1](res/img1.png)
 
@@ -21,7 +21,7 @@ However, you can read data from the file without knowing these parameters, but y
 Let's try another example:
 <br>
 
-In this example we accidentaly added a `value` to the cell `M72` which extended our rectangle, if we failed to provide `13 columns` and `72 rows`, then our requests will return wrong data.
+In this example, we accidentally added a `value` to the cell `M72` which extended our rectangle, if we failed to provide `13 columns` and `72 rows`, then our requests will return the wrong data.
 
 <br>
 
@@ -50,9 +50,9 @@ Print(file.ReadCell(3,4));  //The return should be 'OLD'
 
 //We will change that cell value to 'NEW'
 if(!file.WriteCell(3, 4, "NEW"))
-      Print("ERROR OCURRED");
+      Print("ERROR OCCURRED");
 
-//We will read agaoin that cell to see if it changed
+//We will read again that cell to see if it changed
 Print(file.ReadCell(3,4));  //The return should be 'NEW'
 
 //Now we will try to find the cell with the value 'ENDLINE' that should be in coordinates -> row: 4 | col: 2
@@ -65,7 +65,7 @@ file.FindCell("ENDLINE",row, col);
 Print("POSITION: row: " + (string)row + " | col: " + (string)col);  //Result should be 'POSITION: row: 4 | col: 2'
 ```
 
-The Final generated csv looks like these: <br>
+The Final generated CSV looks like these: <br>
 ![Img3](res/img3.png)
 
 <br>
@@ -90,4 +90,4 @@ The Final generated csv looks like these: <br>
 ```
 
 ## Notes
-You must call the non-default class constructor in the `OnInit()` or `OnStart` function before using the rest of the class methods. Use `<objName>.Constructor(<parameters>);` for doing that.
+Before using the rest of the class methods, you must call the non-default class constructor in the `OnInit()` or `OnStart` function. Use `<objName>.Constructor(<parameters>);` for doing that.
