@@ -35,7 +35,7 @@ public:
            {
             NewOrder(symbol, type, size, price, sl, tp, comment);
            }
-        } NewOrder;
+        } NewTrade;
 
      } Trade;
 
