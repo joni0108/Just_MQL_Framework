@@ -18,7 +18,7 @@
 class CDiscord
   {
 public:
-   void              Constructor(string webhook);
+   void              Create(string webhook);
 
    void              SendMessage(string msgName, string msgTitle, string message);
    void              SendScreenShot(string symbol, int _period, int ScreenWidth = 1912, int ScreenHeight = 1080);
@@ -28,7 +28,7 @@ private:
   } _discord;
 
 //--- Class constructor
-void CDiscord::Constructor(string webhook)
+void CDiscord::Create(string webhook)
   {
    m_webhook = webhook;
   }

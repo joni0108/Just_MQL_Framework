@@ -28,15 +28,15 @@ string TelegramApiUrl = "https://api.telegram.org";
 class CTelegram
   {
 public:
-   void              Constructor(string telegramToken, string telegramChatId);
+   void              Create(string telegramToken, string telegramChatId);
    bool              SendMessage(string message, string filePath = "");
 private:
    string            m_telegramToken;
    string            m_telegramChatId;
-  } _telegram;
+  };
 
 //--- Class constructor
-void CTelegram::Constructor(string telegramToken, string telegramChatId)
+void CTelegram::Create(string telegramToken, string telegramChatId)
   {
    m_telegramToken = telegramToken;
    m_telegramChatId = telegramChatId;
