@@ -136,7 +136,7 @@ int OnInit()
     //--- Creating the backtest
     myBacktest.Create("My Backtest", true, true);
 
-    ticks.Create(Symbol(), PERIOD_CURRENT);
+    ticks.Create(Symbol(), "M1");
 
     return (INIT_SUCCEEDED);
 }

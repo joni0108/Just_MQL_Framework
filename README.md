@@ -14,6 +14,9 @@ Inspired in [MQL_Easy](https://github.com/Denn1Ro/MQL_Easy) framework.
 ```
 3. Just enjoy!
 
+### Notes
+Always download the lastest version from the releases section, the `master` branch may contain some bugs or incomplete code. <br>
+
 ## Usage
 This framework has the following classes:
 - [CAccount](https://github.com/justupcorp/Just_MQL_Framework/wiki/CAccount) - To get all the account information
