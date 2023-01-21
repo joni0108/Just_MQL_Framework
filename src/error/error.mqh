@@ -22,45 +22,24 @@
 //+------------------------------------------------------------------+
 class CError
   {
-private:
-   int               lastError;              //Last common error
 public:
-   void              ResetLast();            //Reset the last error
-   int               GetLast();              //Get the last error (MQL errors has priority over the framework errors)
-   int               GetLastFramework();     //Get the last framework error (check if an MQL error is present and want to check escpecially the framework errors)
-   string            GetLastDescription(bool framework = false);   //Get the description of the last error
-   void              _SetLast(int error);    //Set the last error
+   void              ResetLast();             //Reset the last error
+   int               GetLast();               //Get the last error (MQL errors has priority over the framework errors)
+   string            GetDescription();        //Get the description of the last error
   } Error;
 //+------------------------------------------------------------------+
 
 void CError::ResetLast()
   {
-   lastError=0;
    ResetLastError();
   }
 
 int CError::GetLast()
   {
-      if(GetLastError()==0)
-          return lastError;
-      else
-          return GetLastError();
+    return GetLastError();
   }
 
-int CError::GetLastFramework()
+string CError::GetDescription()
   {
-   return lastError;
-  }
-
-void CError::_SetLast(int error)
-  {
-   lastError=error;
-  }
-
-string CError::GetLastDescription(bool framework = false)
-  {
-    if(framework)
-        return _FrameworkErr(lastError);
-    else
-        return _ErrorDescr(GetLast());
+     return _ErrorDescr(GetLast());
   }
