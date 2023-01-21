@@ -7,8 +7,6 @@
 #property link      "https://www.justup.us"
 #property strict
 
-#include"include/baseErrors.mqh"
-
 #ifdef __MQL4__
 #include "include/mql4Errors.mqh"
 #endif
