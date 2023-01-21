@@ -4,7 +4,7 @@
 class CCSVFile
   {
 public:
-   void              Constructor(string name, string path = NULL, bool commonFlag = false, int rows = -1, int columns = -1);  //Constructor, call it when creating the object.
+   void              Create(string name, string path = NULL, bool commonFlag = false, int rows = -1, int columns = -1);  //Constructor, call it when creating the object.
    bool              Read(string &returned[]);                                                                                //Reads the whole file and return the data into an array.
    string            ReadCell(int row, int col);                                                                              //Reads an specific cell value.
    bool              WriteCell(int row, int col, string toWrite);                                                             //Write data to an specific cell
@@ -30,7 +30,7 @@ private:
    int               m_rows;
   };
 //+------------------------------------------------------------------+
-void CCSVFile::Constructor(string name,string path=NULL,bool commonFlag=false, int rows = -1, int columns = -1)
+void CCSVFile::Create(string name,string path=NULL,bool commonFlag=false, int rows = -1, int columns = -1)
   {
    m_fileName = name;
    m_filePath = path;
@@ -53,7 +53,10 @@ bool CCSVFile::Read(string &returned[])
       handle = FileOpen(m_filePath + m_fileName + m_fileExtension,FILE_READ|FILE_ANSI|FILE_CSV,";");
 
    if(handle == INVALID_HANDLE)
+    {
+      Print("ERR_FILE_OPEN " + __FUNCTION__);
       return false;
+    }
 
    int i = 0;
 
@@ -72,7 +75,10 @@ bool CCSVFile::Read(string &returned[])
 string CCSVFile::ReadCell(int row,int col)
   {
    if(m_columns < 1 || m_rows < 1)
-      return "-1";
+   {
+      Print("ERR_CONSTRUCTOR_NOT_CALLED " + __FUNCTION__);
+      return false;
+   }
 
    int handle;
    string str = "";
@@ -83,7 +89,10 @@ string CCSVFile::ReadCell(int row,int col)
       handle = FileOpen(m_filePath + m_fileName + m_fileExtension,FILE_READ|FILE_ANSI|FILE_CSV,";");
 
    if(handle == INVALID_HANDLE)
-      return "-1";
+    {
+      Print("ERR_FILE_OPEN " + __FUNCTION__);
+      return false;
+    }
 
    int currCol = 1;
    int currRow = 1;
@@ -120,7 +129,10 @@ string CCSVFile::ReadCell(int row,int col)
 bool CCSVFile::WriteCell(int row,int col, string toWrite)
   {
    if(m_columns < 1 || m_rows < 1)
+   {
+      Print("ERR_CONSTRUCTOR_NOT_CALLED " + __FUNCTION__);
       return false;
+   }
 
    int handle;
    string str = "";
@@ -131,7 +143,10 @@ bool CCSVFile::WriteCell(int row,int col, string toWrite)
       handle = FileOpen(m_filePath + m_fileName + m_fileExtension,FILE_READ|FILE_WRITE|FILE_ANSI|FILE_CSV,";");
 
    if(handle == INVALID_HANDLE)
+    {
+      Print("ERR_FILE_OPEN " + __FUNCTION__);
       return false;
+    }
 
    int currCol = 1;
    int currRow = 1;
@@ -232,7 +247,10 @@ bool CCSVFile::Delete()
 bool CCSVFile::FindCell(string toFind,int &resRow, int &resCol)
   {
    if(m_columns < 1 || m_rows < 1)
+   {
+      Print("ERR_CONSTRUCTOR_NOT_CALLED " + __FUNCTION__);
       return false;
+   }
 
    int handle;
 
@@ -242,7 +260,10 @@ bool CCSVFile::FindCell(string toFind,int &resRow, int &resCol)
       handle = FileOpen(m_filePath + m_fileName + m_fileExtension,FILE_READ|FILE_ANSI|FILE_CSV,";");
 
    if(handle == INVALID_HANDLE)
+    {
+      Print("ERR_FILE_OPEN " + __FUNCTION__);
       return false;
+    }
 
    int currCol = 1;
    int currRow = 1;

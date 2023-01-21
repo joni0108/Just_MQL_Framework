@@ -27,67 +27,179 @@ In this example, we accidentally added a `value` to the cell `M72` which extende
 
 ![Img2](res/img2.png)
 
-## Usage
-```cpp
-#include <Just_MQL_Framework/main.mqh> //Include the framework
+# Installation
+1. **You need to call the framework in the beginning of your script, see the main [README](../README.md) file for more information.**
+2. You must make a new `CCSVFile` class object.
+3. You must call the `Create()` method of the class object.
 
-//Creating a class object
+```cpp
+//--- Creating a new class object
+CCSVFile myFile;
+
+//--- Calling the Create() method
+myFile.Create(
+              string name, //The name of the file
+              string path = NULL, //The path or folder, must end with a backslash
+              bool commonFlag = false, //If true, the file will be created in the common folder
+              int rows = -1, //The number of rows that the file does have
+              int cols = -1 //The number of columns that the file does have
+              );
+```
+
+# Usage
+## Read()
+It reads the whole file and returned it as a string.
+
+```cpp
+Read(string &returned[]);
+```
+
+**Return value:** `bool` - `true` if the file was read, `false` if there was an error.
+
+## ReadCell()
+It reads a specific cell of the file by its position.
+
+```cpp
+ReadCell(
+      int row,    //The row of the cell 
+      int col     //The column of the cell
+      );
+```
+
+**Return value:** `string` - The cell value.
+
+## WriteCell()
+It writes data to a specific cell of the file by its position.
+
+```cpp
+WriteCell(
+      int row,    //The row of the cell 
+      int col,    //The column of the cell
+      string toWrite  //The data to write
+      );
+```
+
+**Return value:** `bool` - `true` if the data was written, `false` if there was an error.
+
+## FindCell()
+It finds a value in a cell and return the first found coordinates to the given variables.
+
+```cpp
+FindCell(
+      string toFind,  //The value to find
+      int &resRow,    //The row of the cell 
+      int &resCol     //The column of the cell
+      );
+```
+
+**Return value:** `bool` - `true` if the value was found, `false` if there was an error.
+
+## Rename()
+It renames the file.
+
+```cpp
+Rename(
+      string newName  //The new name of the file
+      );
+```
+
+**Return value:** `bool` - `true` if the file was renamed, `false` if there was an error.
+
+## Delete()
+It deletes the file.
+
+```cpp
+Delete();
+```
+
+**Return value:** `bool` - `true` if the file was deleted, `false` if there was an error.
+
+## Move()
+It moves the file to another folder.
+
+```cpp
+Move(
+      string newPath,  //The new path of the file
+      bool deleteFolder = false  //If true, the folder will be deleted
+      );
+```
+
+**Return value:** `bool` - `true` if the file was moved, `false` if there was an error.
+
+## Getters
+- `GetFileName()` - Returns the name of the file.
+- `GetFilePath()` - Returns the path of the file.
+- `GetFileFullPath()` - Returns the full path of the file.`
+- `GetFileExtension()` - Returns the extension of the file.
+- `IsCommon()` - Returns `true` if the file is in the common folder, `false` if it's in the script folder.
+
+# Example
+The following code is an example of how to use the `CCSVFile` class. It will do the following actions:
+1. It will make a new class object.
+2. It will create a file and fill some cells with data.
+3. It will call the `Create()` method of the class object.
+4. It will read the cell `D3` and print it.
+5. It will change the value of the cell `D3` to `NEW`.
+6. It will read the cell `D3` again and print it.
+7. It will find the value `ENDLINE` in the file and print the coordinates of the cell that contains it.
+
+```cpp
+//+------------------------------------------------------------------+
+//| Example program for the CTextFile class                          |
+//+------------------------------------------------------------------+
+//--- Importing the framework
+#include <Just_MQL_Framework/main.mqh>
+
+//--- Creating a new class object
 CCSVFile file;
-,"","","");  //ROW 1
-FileWrite(handle,"","","","");  //ROW 2
-FileWrite(handle,"","","","OLD");  //ROW 3
-FileWrite(handle,"","ENDLINE","","");  //ROW 4
 
-//Clos the file
-FileClose(handle);
+int OnInit()
+{
+      //--- Adding some data to the file
+      int handle = FileOpen("test.csv",FILE_CSV|FILE_WRITE|FILE_READ);
 
-//Constructor ()
-file.Constructor("test",NULL,false,4,4);
+      FileWrite(handle,"","","","");  //ROW 1
+      FileWrite(handle,"","","","");  //ROW 2
+      FileWrite(handle,"","","","OLD");  //ROW 3
+      FileWrite(handle,"","ENDLINE","","");  //ROW 4
 
-//Our target cell will be 'D3', with coordinates -> row: 3 | col: 4
-//We will read that cell:
-Print(file.ReadCell(3,4));  //The return should be 'OLD'
+      //--- Closing the file
+      FileClose(handle);
 
-//We will change that cell value to 'NEW'
-if(!file.WriteCell(3, 4, "NEW"))
-      Print("ERROR OCCURRED");
+      //--- Calling the Create() method
+      file.Create("test.csv",NULL,false,4,4);
 
-//We will read again that cell to see if it changed
-Print(file.ReadCell(3,4));  //The return should be 'NEW'
+      //--- Reading the cell 'D3'
+      Print(file.ReadCell(3,4));  //The return should be 'OLD'
 
-//Now we will try to find the cell with the value 'ENDLINE' that should be in coordinates -> row: 4 | col: 2
-int row;    //To save the row coord
-int col;    //To save the col coord
-   
-file.FindCell("ENDLINE",row, col);
+      //--- Changing the value of the cell 'D3'
+      if(!file.WriteCell(3, 4, "NEW"))
+            Print("ERROR OCCURRED");
+      
+      //--- Reading the cell 'D3' again
+      Print(file.ReadCell(3,4));  //The return should be 'NEW'
 
-//Now return the coordinates as an output
-Print("POSITION: row: " + (string)row + " | col: " + (string)col);  //Result should be 'POSITION: row: 4 | col: 2'
+      //--- Finding the value 'ENDLINE'
+      int row,col;
+      if(file.FindCell("ENDLINE",row,col))
+            Print("ENDLINE found at row: ",row," | col: ",col);
+      else
+            Print("ERROR OCCURRED");
+
+      ExpertRemove();
+      return(INIT_SUCCEEDED);
+}
 ```
 
-The Final generated CSV looks like these: <br>
-![Img3](res/img3.png)
+**Output:**
 
-<br>
+![CCSVFile class example](res/img3.png)
 
-## Class Methods
-```cpp
-   void              Constructor(string name, string path = NULL, bool commonFlag = false, int rows = -1, int columns = -1);  //Constructor, call it when creating the object.
-   bool              Read(string &returned[]);                                                                                //Reads the whole file and return the data into an array.
-   string            ReadCell(int row, int col);                                                                              //Reads an specific cell value.
-   bool              WriteCell(int row, int col, string toWrite);                                                             //Write data to an specific cell
-   bool              FindCell(string toFind, int &resRow, int &resCol);                                                       //Finds a value in a cell and return the first found coordinates to the given variables.
-   bool              Rename(string newName);                                                                                  //Renames the file
-   bool              Move(string newPath, bool deleteFolder = false);                                                         //Moves the file to a new path
-   bool              Delete();                                                                                                //Deletes the file
+Check the flow-chart below to see a compact and visual undertanding on how to call the class methods:
 
-   //--- Getters
-   string            GetFileName() { return m_fileName; }                                    //Return the file name
-   string            GetFilePath() { return m_filePath; }                                    //Return the file path
-   string            GetFileExtension() { return m_fileExtension; }                          //Return the file extension
-   string            GetFullPath() { return m_filePath + m_fileName + m_fileExtension; }     //Return the full path
-   bool              IsCommon() { return m_inCommonFolder; }                                 //Return if the file is in the common folder or not
-```
+![CCSVFile class flow-chart](res/flowcharts/CCSVFile.png)
 
-## Notes
-Before using the rest of the class methods, you must call the non-default class constructor in the `OnInit()` or `OnStart` function. Use `<objName>.Constructor(<parameters>);` for doing that.
+# Errors
+- `ERR_FILE_OPEN` - The file could not be opened.
+- `ERR_WRONG_PARAMETERS` - The parameters given to the class methods are wrong. Check the parameters given to the class methods.
+- `ERR_CONSTRUCTOR_NOT_CALLED` - The constructor was not called before using the class methods. Call the constructor before using the class methods.
