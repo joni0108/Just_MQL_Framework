@@ -50,4 +50,5 @@ If you want to collaborate directly with the project, please, feel free to reach
 
 # TODO
 - Add the CTime class to work with servers and local time, and with user time-zones
+- Add the CTrend class to the framework
 - Extend the framework features with other useful libraries that works in both languages
