@@ -1,16 +1,3 @@
-#include "../../error/error.mqh"
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-enum ENUM_FILE_TYPE
-  {
-   TXT = 0,
-   DAT = 1,
-   LOGS = 2,
-   SIGNAL = 3
-  };
-
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
@@ -20,8 +7,7 @@ public:
 
    //--- Constructor
                      CTextFile() {}
-   void              Constructor(string name, string path = NULL, bool commonFlag = false, ENUM_FILE_TYPE fileType = TXT);    //Class Constructor
-   bool              Create(string baseText = "");                                                                            //Create the file with a base text
+   void              Create(string name, string path = NULL, bool commonFlag = false, string extension = ".txt");             //Class Constructor
    bool              AddText(string text);                                                                                    //Adds a text line to the file
    string            Read();                                                                                                  //Read the first line of the file
    string            ReadLine(int lineNum);                                                                                   //Read an specific line of the file
@@ -31,15 +17,14 @@ public:
    bool              Rename(string newName);                                                                                  //Renames the file
    bool              Move(string newPath, bool deleteFolder = false);                                                         //Moves the file to a new path
    bool              Delete();                                                                                                //Deletes the file
-   void              ReadFull();                                                                                              //This updates the FullFileLines[] array to be used later.
+   void              ReadToArray(string &resArray[]);                                                                                              //This updates the FullFileLines[] array to be used later.
 
    //--- Getters
    string            GetFileName() { return m_fileName; }                                    //Return the file name
    string            GetFilePath() { return m_filePath; }                                    //Return the file path
    string            GetFileExtension() { return m_fileExtension; }                          //Return the file extension
    string            GetFullPath() { return m_filePath + m_fileName + m_fileExtension; }     //Return the full path
-   bool              IsCommon() { return m_inCommonFolder; }                                 //Return if the file is in the common folder or not
-   string            FullFileLines[];                                                        //Is an array with all the document lines. ReadFull() must be called before to update the lines.
+   bool              IsCommon() { return m_inCommonFolder; }                                 //Return if the file is in the common folder or not                                                     //Is an array with all the document lines. ReadFull() must be called before to update the lines.
 
 private:
    string            m_fileName;
@@ -52,80 +37,26 @@ private:
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void CTextFile::Constructor(string name,string path=NULL,bool commonFlag=false,ENUM_FILE_TYPE fileType=0)
+void CTextFile::Create(string name,string path=NULL,bool commonFlag=false,string extension = ".txt")
   {
    m_hFile = INVALID_HANDLE;
    m_fileName = name;
    m_filePath = path;
    m_inCommonFolder = commonFlag;
-
-   if(fileType == TXT)
-     {
-      m_fileExtension = ".txt";
-     }
-   else
-      if(fileType == DAT)
-        {
-         m_fileExtension = ".dat";
-        }
-      else
-         if(fileType == LOGS)
-           {
-            m_fileExtension = ".logs";
-           }
-         else
-            if(fileType == SIGNAL)
-              {
-               m_fileExtension = ".signal";
-              }
-            else
-              {
-               m_fileExtension = ".txt";
-              }
+   m_fileExtension = extension;
   }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void CTextFile::ReadFull(void)
+void CTextFile::ReadToArray(string &resArray[])
   {
    int amount = this.CountLines();
 
-   ArrayResize(this.FullFileLines,amount);
-
    for(int i=0; i<amount; i++)
      {
-      this.FullFileLines[i] = this.ReadLine(i + 1);
+      resArray[i] = ReadLine(i + 1);
      }
-  }
-
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-bool CTextFile::Create(string baseText = "")
-  {
-   int fileHandle = INVALID_HANDLE;
-   string fullPath = m_filePath + m_fileName + m_fileExtension;
-
-   if(m_inCommonFolder)
-     {
-      fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT | FILE_COMMON);
-     }
-   else
-     {
-      fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT);
-     }
-
-   if(!FileWrite(fileHandle, baseText))
-     {
-      FileClose(fileHandle);
-      return false;
-     }
-
-   FileClose(fileHandle);
-
-   return true;
   }
 
 
@@ -144,6 +75,12 @@ bool CTextFile::AddText(string text)
    else
      {
       fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT);
+     }
+   
+   if(fileHandle == INVALID_HANDLE)
+     {
+      Print("ERR_FILE_OPEN " + __FUNCTION__);
+      return false;
      }
 
    FileSeek(fileHandle, 0, SEEK_END);
@@ -176,6 +113,12 @@ string CTextFile::Read()
      {
       fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT);
      }
+   
+   if(fileHandle == INVALID_HANDLE)
+     {
+      Print("ERR_FILE_OPEN " + __FUNCTION__);
+      return "-1";
+     }
 
    text = FileReadString(fileHandle);
 
@@ -196,7 +139,7 @@ string CTextFile::ReadLine(int lineNum)
 
    if(lineNum < 1 || lineNum > CountLines() + 1)
      {
-        Error._SetLast(20001);
+        Print("ERR_WRONG_PARAMETERS " + __FUNCTION__);
         return text;
      }
 
@@ -207,6 +150,12 @@ string CTextFile::ReadLine(int lineNum)
    else
      {
       fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT);
+     }
+
+    if(fileHandle == INVALID_HANDLE)
+     {
+      Print("ERR_FILE_OPEN " + __FUNCTION__);
+      return "-1";
      }
 
    for(int i = 0; i < lineNum; i++)
@@ -238,6 +187,12 @@ int CTextFile::CountLines()
      {
       fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT);
      }
+    
+    if(fileHandle == INVALID_HANDLE)
+     {
+      Print("ERR_FILE_OPEN " + __FUNCTION__);
+      return false;
+     }
 
    while(!FileIsEnding(fileHandle))
      {
@@ -257,18 +212,17 @@ int CTextFile::CountLines()
 //+------------------------------------------------------------------+
 bool CTextFile::DeleteLine(int lineNum)
   {
-   int fileHandle = INVALID_HANDLE;
    string fullPath = m_filePath + m_fileName + m_fileExtension;
    int controller = 1;
    CTextFile tempFile;
 
     if(lineNum < 1 || lineNum > CountLines() + 1)
      {
-        Error._SetLast(20001);
+        Print("ERR_WRONG_PARAMETERS " + __FUNCTION__);
         return false;
      }
 
-   tempFile.Constructor(m_fileName + "_temp", m_filePath, m_inCommonFolder);
+   tempFile.Create(m_fileName + "_temp", m_filePath, m_inCommonFolder);
 
    while(controller <= CountLines())
      {
@@ -282,7 +236,6 @@ bool CTextFile::DeleteLine(int lineNum)
       controller++;
      }
 
-   FileClose(fileHandle);
    Delete();
 
    tempFile.Rename(m_fileName);
@@ -298,7 +251,6 @@ bool CTextFile::DeleteLine(int lineNum)
 //+------------------------------------------------------------------+
 int CTextFile::GetLinePosition(string textToFind)
   {
-   int fileHandle = INVALID_HANDLE;
    string fullPath = m_filePath + m_fileName + m_fileExtension;
    int lineCount = 1;
    int controller = 1;
@@ -312,8 +264,6 @@ int CTextFile::GetLinePosition(string textToFind)
       lineCount++;
       controller++;
      }
-
-   FileClose(fileHandle);
 
    return -1;
   }
@@ -367,6 +317,7 @@ bool CTextFile::Move(string newPath, bool deleteFolder = false)
       fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT | FILE_COMMON);
       if(fileHandle == INVALID_HANDLE)
         {
+         Print("ERR_FILE_OPEN " + __FUNCTION__);
          return false;
         }
      }
@@ -375,6 +326,7 @@ bool CTextFile::Move(string newPath, bool deleteFolder = false)
       fileHandle = FileOpen(fullPath, FILE_WRITE | FILE_READ | FILE_TXT);
       if(fileHandle == INVALID_HANDLE)
         {
+         Print("ERR_FILE_OPEN " + __FUNCTION__);
          return false;
         }
      }
