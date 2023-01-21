@@ -112,7 +112,7 @@ int OnInit()
 **Results**
 The following picture is the result of running the above code 2 times: <br>
 
-![CLogs class example](res/examples/CLogs.png)
+![CLogs class example](res/CLogs.png)
 
 Check the flow-chart below to see a compact and visual undertanding on how to call the class methods:
 
