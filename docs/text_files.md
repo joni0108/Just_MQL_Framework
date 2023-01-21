@@ -159,7 +159,7 @@ ReadToArray(string &resArray[]); //The array where the lines will be stored
 # Example
 The following code is an example of how to use the `CTextFile` class. It will do the following actions:
 1. It will make a new class object.
-2. It will create a file in the common folder with the name `myFile.txt`, and the initial text `Hello World!`.
+2. It will create a file in the regular folder with the name `myFile.txt`, and the initial text `Hello World!`.
 3. It will add some lines to the file.
 4. It will read the first line of the file.
 5. It will read and print all the lines of the file.

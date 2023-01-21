@@ -1,5 +1,4 @@
 #include "base_txt.mqh"
-#include "../../error/error.mqh"
 
 //+------------------------------------------------------------------+
 //|                                                                  |
@@ -22,7 +21,7 @@ public:
                      CLogs(void) {}
                     ~CLogs(void) {}
 
-   void              Constructor(string name, string path = NULL, bool commonFlag = false);  //Class Constructor, call it in the OnInit()
+   void              Create(string name, string path = NULL, bool commonFlag = false);      //Class Constructor, call it in the OnInit()
    void              Add(string details, LOG_TYPE type, int errorCode = 0);                  //Add a log to the file
    void              Initialize();                                                           //Add the initialization line
    void              Unitialize();                                                           //Add the uninitialization line
@@ -36,9 +35,9 @@ private:
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-void CLogs::Constructor(string name,string path=NULL,bool commonFlag=false)
+void CLogs::Create(string name,string path=NULL,bool commonFlag=false)
   {
-   m_name = name;
+   m_name = name + ".log";
    m_path = path;
    m_inCommon = commonFlag;
   }
@@ -76,6 +75,12 @@ void CLogs::Add(string details, LOG_TYPE type, int errorCode = 0)
       fileHandle = FileOpen(m_path + m_name, FILE_WRITE | FILE_READ | FILE_TXT);
      }
 
+   if(fileHandle == INVALID_HANDLE)
+   {
+    Print("ERR_FILE_OPEN " + __FUNCTION__);
+    return;
+   }
+
    if(!firstTime)
      {
       FileSeek(fileHandle,0,SEEK_END);
@@ -105,6 +110,12 @@ void CLogs::Initialize(void)
       fileHandle = FileOpen(m_path + m_name, FILE_WRITE | FILE_READ | FILE_TXT);
      }
 
+  if(fileHandle == INVALID_HANDLE)
+   {
+    Print("ERR_FILE_OPEN " + __FUNCTION__);
+    return;
+   }
+
    FileSeek(fileHandle,0,SEEK_END);
    FileWrite(fileHandle,(TimeToString(TimeLocal()) + " | " + "INIT " +  " | The Logs Files has been initialized------------------------------------------------------------"));
    FileClose(fileHandle);
@@ -125,6 +136,11 @@ void CLogs::Unitialize(void)
      {
       fileHandle = FileOpen(m_path + m_name, FILE_WRITE | FILE_READ | FILE_TXT);
      }
+  if(fileHandle == INVALID_HANDLE)
+   {
+    Print("ERR_FILE_OPEN " + __FUNCTION__);
+    return;
+   }
 
    FileSeek(fileHandle,0,SEEK_END);
    FileWrite(fileHandle,(TimeToString(TimeLocal()) + " | " + "DEINIT" +  "| The Logs Files has been deinitialized----------------------------------------------------------\n"));
