@@ -1,4 +1,4 @@
-# CONTRIBUTING
+# Contributing
 This file contains guidelines for contributing to the project.
 
 ## Table of Contents
