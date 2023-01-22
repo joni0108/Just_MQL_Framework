@@ -86,4 +86,4 @@ The framework also have some `concepts libraries` that will help you to code som
 _See the [wiki](https://github.com/justupcorp/Just_MQL_Framework/wiki/home) for detailed information on how to use each class._
 
 # Contributing
-If you want to contribute to the framework, please, read the [contributing](CONTRIBUTING.md) file.
+If you want to contribute to the framework, please, read the [contributing](contribute.md) file.
