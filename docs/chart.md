@@ -1,4 +1,12 @@
 # CChart class
+
+## TODO
+- [ ] Split the class into modules
+- [ ] Add the new methods of `long Chart.Find(string symbol, string timeframe);`
+- [ ] Add the `bool ChartSelect(long chartID);` and all the .Get methods
+
+--------------------------------------------------------------------------- OLD
+# CChart class
 This class will help yoou handle chart actions and chart objects <br>
 
 ## Usage

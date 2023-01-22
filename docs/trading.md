@@ -70,18 +70,49 @@ int OnInit()
    string            ResultComment() {return _request_comment;}   // Get the comment of the order
 
    //SELECTED ORDER DETAILS
-   string            GetSymbol() {return _symbol;}          //Get the selected trade symbol
-   string            GetComment() {return _comment;}        //Get the selected trade comment
-   int               GetType() {return _type;}              //Get the selected trade type
-   int               GetMagic() {return _magicNumber;}      //Get the selected trade magic number
-   double            GetOpenPrice() {return _openPrice;}    //Get the selected trade open price
-   double            GetClosePrice() {return _closePrice;}  //Get the selected trade close price
-   double            GetStopLoss() {return _sl;}            //Get the selected trade stop loss
-   double            GetTakeProfits() {return _tp;}         //Get the selected trade take profits
-   double            GetLots() {return _lots;}              //Get the selected trade lot size
-   datetime          GetOpenTime() {return _openTime;}      //Get the selected trade open time
-   datetime          GetCloseTime() {return _closeTime;}    //Get the selected trade close time
+   string            GetSymbol();           //Get the selected trade symbol
+   string            GetComment();          //Get the selected trade comment
+   int               GetType();             //Get the selected trade type
+   int               GetMagic();            //Get the selected trade magic number
+   double            GetOpenPrice();        //Get the selected trade open price
+   double            GetClosePrice();       //Get the selected trade close price
+   double            GetStopLoss();         //Get the selected trade stop loss
+   double            GetTakeProfits();      //Get the selected trade take profits
+   double            GetLots();             //Get the selected trade lot size
+   datetime          GetOpenTime();         //Get the selected trade open time
+   datetime          GetCloseTime();        //Get the selected trade close time
+   double            GetSLPips();           //Get the selected trade stop loss in pips
+   double            GetTPPips();           //Get the selected trade take profits in pips
+   string            GetDuration(string method); //Get the selected trade duration
+   double            GetPL(string method);  //Get the selected trade profit
+   double            GetRisk(string method); //Get the selected trade risk
 ```
+
+# Methods Parameters
+## Trading.Select(int index, int selectMethod = BY_INDEX, int pool = POOL_MAIN)
+### index
+- The index position or ticket of the trade you want to select
+
+### selectMethod
+- `BY_INDEX` - Select the trade by index position
+- `BY_TICKET` - Select the trade by ticket
+
+## Trading.GetDuration(string method)
+### method
+- `S` - Return the duration in seconds
+- `M` - Return the duration in minutes
+- `H` - Return the duration in hours
+- `D` - Return the duration in days
+- `W` - Return the duration in weeks
+- `HMS` - Return the duration in hours, minutes and seconds
+
+## Trading.GetPL(string method) & Trading.GetRisk(string method)
+### method
+- `$` - Return the profit in dollars
+- `P` - Return the profit in pips
+- `R` - Return the profit in ratio
+- `%` - Return the profit in percentage
+
 
 ## Notes
 Make sure to use `Trading.Select(<parameters>);` prior to getting old (or unregistered) trades information like you do in MQL4
