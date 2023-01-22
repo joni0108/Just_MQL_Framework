@@ -7,7 +7,7 @@ A cross-language framework that allows you to code your scripts and EAs only onc
 Inspired in [MQL_Easy](https://github.com/Denn1Ro/MQL_Easy) framework.
 
 # Installation
-1. Download/clone the repository into your `MQL4/Include` and `MQL5/Include` folders.
+1. Download the most recent release into your `MQL4/Include` and `MQL5/Include` folders. Please, do not clone the main branch until `release v2-stable` or higher because at this moment it does have incomplete code that doesn't compile. Use the most recent `v1.42-stable` release instead.
 2. At the top of your `#include` instructions on your script, add the following line:
 ```cpp
 #include <Just_MQL_Framework/main.mqh>
