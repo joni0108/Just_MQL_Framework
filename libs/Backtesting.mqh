@@ -17,29 +17,15 @@ private:
    string            csvPath;
    string            reportPath;
    long              tickets[];
-   string            symbols[];
-   int               timeframes[];
+   string            strategies[];
 public:
                      CBacktesting() {}
                     ~CBacktesting() {}
-   void              Create(string name);       //Constructor
+   void              Create(string name);                   //Constructor
 
-   bool              AddEntry(long ticket,      //The ticket of the entry
-                              string strategy,           //The strategy used
-                              bool takeScreenshot = true, //If you want to take a screenshot of the entry
-                              int timeframe = PERIOD_CURRENT //The timeframe of the chart screenshot
-                             );
-
-   bool              AddEntry(string strategy,  //The strategy used
-                              string symbol,             //The symbol
-                              double entryPrice,         //The entry price
-                              double stopLoss,           //The stop loss
-                              double takeProfit,         //The take profit
-                              double volume,             //The volume
-                              ENUM_ORDER_TYPE orderType, //The order type
-                              string comment,            //The comment
-                              bool takeScreenshot = true, //If you want to take a screenshot of the entry
-                              int timeframe = PERIOD_CURRENT //The timeframe of the chart screenshot
+   bool              AddEntry(long ticket,                  //The ticket of the entry
+                              string strategy,              //The strategy used
+                              bool takeScreenshot = true    //If you want to take a screenshot of the entry
                              );
 
    void              Update();
@@ -65,28 +51,31 @@ void CBacktesting::Create(string name)
          return;
         }
 
-      FileWrite(handle, "DATE", "SYMBOL", "STRATEGY", "ENTRY_PRICE", "STOP_LOSS", "TAKE_PROFIT", "VOLUME", "ORDER_TYPE", "SL PIPS", "TP PIPS", "P/L PIPS", "P/L %");
+      FileWrite(handle, "Type", "Asset", "Date", "SL Pips", "P/L Pips", "Hours in trade", "Risk $", "Strategy", "P/L RRR", "P/L $");
       FileClose(handle);
      }
 
    if(!FileIsExist(reportPath))
      {
-      int handle = FileOpen(reportPath, FILE_TXT | FILE_READ | FILE_WRITE);
+      int handle2 = FileOpen(reportPath, FILE_TXT | FILE_READ | FILE_WRITE);
 
-      if(handle == -1)
+      if(handle2 == -1)
         {
          Print("ERR_BACKTESTING_CREATE " + reportPath);
          return;
         }
 
-      FileWrite(handle, "# Backtesting Report");
+      FileWrite(handle2, "# Backtesting Report");
+      
+      FileClose(handle2);
      }
+    
   }
 
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-bool CBacktesting::AddEntry(long ticket, string strategy, bool takeScreenshot, int timeframe)
+bool CBacktesting::AddEntry(long ticket, string strategy, bool takeScreenshot = true)
   {
    if(!FileIsExist(csvPath))
      {
@@ -95,47 +84,12 @@ bool CBacktesting::AddEntry(long ticket, string strategy, bool takeScreenshot, i
      }
 
    ArrayResize(tickets, ArraySize(tickets) + 1);
-   ArrayResize(symbols, ArraySize(symbols) + 1);
-   ArrayResize(timeframes, ArraySize(timeframes) + 1);
+   ArrayResize(strategies, ArraySize(strategies) + 1);
 
    tickets[ArraySize(tickets) - 1] = ticket;
-   symbols[ArraySize(symbols) - 1] = OrderSymbol();
-   timeframes[ArraySize(timeframes) - 1] = timeframe;
 
-   return true;
-  }
+   strategies[ArraySize(strategies) - 1] = strategy;
 
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-bool CBacktesting::AddEntry(string strategy, string symbol, double entryPrice, double stopLoss, double takeProfit, double volume, ENUM_ORDER_TYPE orderType, string comment, bool takeScreenshot, int timeframe)
-  {
-   if(!FileIsExist(csvPath))
-     {
-      Print("ERR_CONSTRUCTOR_NOT_CALLED " + csvPath);
-      return false;
-     }
-
-   //--- CSV File handle
-   int handle = FileOpen(csvPath, FILE_CSV | FILE_READ | FILE_WRITE);
-
-   if(handle == -1)
-     {
-      Print("ERR_BACKTESTING_ADD_ENTRY " + csvPath);
-      return false;
-     }
-   
-   //--- MD File handle
-   int handle2 = FileOpen(reportPath, FILE_CSV | FILE_READ | FILE_WRITE);
-
-   if(handle2 == -1)
-     {
-      Print("ERR_BACKTESTING_ADD_ENTRY " + reportPath);
-      return false;
-     }
-
-   FileClose(handle);
-   FileClose(handle2);
    return true;
   }
 
@@ -144,6 +98,46 @@ bool CBacktesting::AddEntry(string strategy, string symbol, double entryPrice, d
 //+------------------------------------------------------------------+
 void CBacktesting::Update()
   {
-
+      for(int i=0;i<ArraySize(tickets);i++)
+        {
+            if(tickets[i] == 0)
+               continue;
+            else
+              {
+                  if(!Trading.Select((int)tickets[i],BY_TICKET,POOL_HISTORY))
+                     continue;
+                  
+                  else
+                    {
+                        int handle = FileOpen(csvPath,FILE_CSV|FILE_READ|FILE_WRITE);
+                        
+                        if(handle == INVALID_HANDLE)
+                        {
+                           Print("ERR_BACKTESTING_CREATE " + csvPath);
+                           return;
+                        }
+                        
+                        else
+                          {
+                              FileSeek(handle,0,SEEK_END);
+                              
+                              string type;
+                              
+                              if(Trading.GetType() == 0)
+                                 type = "BUY";
+                              else
+                                 type = "SELL";
+                              
+                              FileWrite(handle,type,Trading.GetSymbol(),(string)Trading.GetOpenTime(),(string)Trading.GetSLPips(),(string)Trading.GetDuration("H"),(string)Trading.GetRisk("$"),strategy[i],(string)Trading.GetPL("R"),Trading.GetPL("$"));
+                              
+                              FileClose(handle);
+                              
+                              //--- Logic for the screenshot
+                              
+                              tickets[i] = 0;
+                          }
+                    }
+              }
+        }
   }
 //+------------------------------------------------------------------+
