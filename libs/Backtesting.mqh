@@ -128,11 +128,12 @@ void CBacktesting::Update()
                               else
                                  type = "SELL";
                               
-                              FileWrite(handle,type,Trading.GetSymbol(),(string)Trading.GetOpenTime(),(string)Trading.GetSLPips(),(string)Trading.GetDuration("H"),(string)Trading.GetRisk("$"),strategy[i],(string)Trading.GetPL("R"),Trading.GetPL("$"));
+                              FileWrite(handle,type,Trading.GetSymbol(),(string)Trading.GetOpenTime(),(string)Trading.GetSLPips(),(string)Trading.GetDuration("H"),(string)Trading.GetRisk("$"),strategies[i],(string)Trading.GetPL("R"),Trading.GetPL("$"));
                               
                               FileClose(handle);
                               
                               //--- Logic for the screenshot
+                              
                               
                               tickets[i] = 0;
                           }
