@@ -1,0 +1,21 @@
+# TODO
+Pending tasks before the release of the new version:
+- [ ] Update the `CTrading` class with the new methods.
+- [ ] Finish coding the `CBacktesting` class and test it.
+  - [ ] Update the documentation of the `CBacktesting` class.
+- [ ] Finish coding the `CTrend` class and test it.
+  - [ ] Update the documentation of the `CTrend` class.
+- [ ] Split the current `CChart` class into the new `CChart` and `CDebug` classes.
+  - [ ] Update the documentation of the `CChart` class.
+  - [ ] Update the documentation of the `CDebug` class.
+  - [ ] Test them both.
+- [ ] Make the `v1.42 -> v2` migration guide.
+- [ ] Open the `open` branch.
+- [ ] Open the `dev` branch and start coding there instead of the main branch.
+- [x] Delete the double files in the `CTerminal` folder, in the dlls folders.
+- [ ] Code the `CSymbol` class.
+  - [ ] Update the documentation of the `CSymbol` class.
+  - [ ] Test it.
+- [ ] Code the `CTerminalInfo` class.
+  - [ ] Update the documentation of the `CTerminalInfo` class.
+  - [ ] Test it.
