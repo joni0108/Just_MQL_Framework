@@ -78,9 +78,6 @@ This is an example of including the framework version 2.0 and including only the
 ### Migrating from V1.42 to V2?
 See the [Syntax Update](syntax-update.md) file.
 
-### Notes
-Always download the lastest version from the releases section, the `master` branch may contain some bugs or incomplete code. <br>
-
 ## Usage
 The framework has the following classes:
 - [CAccount](https://github.com/justupcorp/Just_MQL_Framework/wiki/CAccount) - To get all the account information
