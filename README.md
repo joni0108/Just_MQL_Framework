@@ -42,6 +42,8 @@ A cross-language framework that allows you to code your scripts and EAs only onc
 #include <Just_MQL_Framework-1.42-stable/main.mqh>
 ```
 
+### Custom Installation
+
 If you only want to include the support to cross-language and do not want to load the utility libraries, go to the `Main.mqh` file and comment the line #15 that have the definition of `INCLUDE_LIBRARIES`.
 
 If you wish to include an specific library from the utility pool, go to the file `librariesList.mqh` and see how to include the parent of the library from there and just add the following line in your script after including the framework main file:
