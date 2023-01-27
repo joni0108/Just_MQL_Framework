@@ -3,8 +3,4 @@
 - A new a very complete errors symtem for all the current methods has been added.
 - Splitted the `CChart` class into `CChart` and `CDebug` classes.
 - Added new methods to the new `CChart` class.
-
 - Splitted the `CWebRequest` class into `CDiscord` and `CTelegram`.
-=======
-- Splitted the `CWebRequest` class into `CDiscord` and `CTelegram`.
-

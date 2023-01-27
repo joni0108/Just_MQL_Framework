@@ -48,7 +48,7 @@ public:
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-
+void CTicks::Create(string symbol,string timeframe)
   {
    this.m_timeframe = timeframe;
    this.m_symbol = symbol;

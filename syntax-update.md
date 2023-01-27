@@ -31,5 +31,7 @@ This class was splitted into 2 independent classes: CDiscord and CTelegram.
 The class `CWebRequest` and its pre-defined object `WebRequest` do not longer exist.
 
 # Rest of classes
-cks.Create()` | Same parameters.
+All the classes that have the `Constructor()` method was changed by `Create()` method in the new vida.
 
+**Example:** <br>
+`Ticks.Constructor()` --> `Ticks.Create()` | Same parameters.
