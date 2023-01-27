@@ -1,8 +1,4 @@
-//+------------------------------------------------------------------+
-//|                                                      ProjectName |
-//|                                      Copyright 2018, CompanyName |
-//|                                       http://www.companyname.net |
-//+------------------------------------------------------------------+
+
 
 #include "../../base/definitions.mqh"
 
@@ -119,8 +115,7 @@ public:
    double            GetTakeProfits() {return _tp;}         //Get the selected trade take profits
    double            GetLots() {return _lots;}              //Get the selected trade lot size
    datetime          GetOpenTime() {return _openTime;}      //Get the selected trade open time
-   datetime          GetCloseTime() {return _closeTime;}    //Get the selected trade close time
-   int               GetTicket() {return _ticket;}          //Get the selected trade ticket
+
    double            GetSLPips();                           //Get the selected trade stop loss in pips
    double            GetTPPips();                           //Get the selected trade take profits in pips
    int               GetDuration(string method);            //Get the selected trade duration
@@ -131,7 +126,7 @@ public:
    double            CalculatePips(string symbol, double price1, double price2);                            //Get the pips between two prices
    double            CalculatePipsValue(double lots);                                                       //Get the pips value of a trade
    double            CalculateLots(double entryPrice, double slPrice, double riskInMoney, string symbol);   //Get the lot size of a trade from prices
-   double            CalculateLots(double slPips, double riskInMoney, string symbol);                       //Get the lot size of a trade from pips
+
 
   } Trading;
 //+------------------------------------------------------------------+
@@ -201,8 +196,7 @@ bool CTrading::Select(int index,int selectMethod = BY_INDEX, int pool = POOL_MAI
 
       else
          if(pool == POOL_HISTORY)
-           {
-            bool res = OrderSelect(index,SELECT_BY_POS,MODE_HISTORY);
+
 
             if(!res)
                return false;
@@ -212,6 +206,7 @@ bool CTrading::Select(int index,int selectMethod = BY_INDEX, int pool = POOL_MAI
 
             return res;
            }
+
 
          else
             return false;
@@ -506,186 +501,7 @@ bool CTrading::SellStop(double volume,double price,string symbol="SYMBOL",double
    return true;
   }
 
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-bool CTrading::PositionModify(int ticket,double sl,double tp)
-  {
-   bool res = OrderModify(ticket,0,sl,tp,0);
-
-   if(!res)
-      return false;
-
-   _request_sl = sl;
-   _request_tp = tp;
-
-   return true;
-  }
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-bool CTrading::PositionClose(int ticket,int deviation=0)
-  {
-   if(!OrderSelect(ticket,SELECT_BY_TICKET))
-      return false;
-
-   bool res;
-
-   if(OrderType() == OP_BUY)
-      res = OrderClose(ticket,OrderLots(),Bid,deviation);
-
-   else
-      if(OrderType() == OP_SELL)
-         res = OrderClose(ticket,OrderLots(),Ask,deviation);
-      else
-         res = false;
-
-   if(!res)
-      return false;
-
-
-   return true;
-
-  }
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-bool CTrading::PositionClosePartial(int ticket,double volume,int deviation=0)
-  {
-   if(!OrderSelect(ticket,SELECT_BY_TICKET))
-      return false;
-
-   bool res;
-
-   if(OrderType() == OP_BUY)
-      res = OrderClose(ticket,volume,Ask,deviation);
-
-   else
-      if(OrderType() == OP_SELL)
-         res = OrderClose(ticket,volume,Bid,deviation);
-      else
-         res = false;
-
-   if(!res)
-      return false;
-
-
-   return true;
-  }
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-bool CTrading::ModifyOrder(int ticket,double price,double sl,double tp,datetime expiration=0)
-  {
-   bool res = OrderModify(ticket,price,sl,tp,expiration);
-
-   if(!res)
-      return false;
-
-   _request_sl = sl;
-   _request_tp = tp;
-   _request_price = price;
-
-   return true;
-  }
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-bool CTrading::DeleteOrder(int ticket)
-  {
-   bool res = OrderDelete(ticket);
-
-   return res;
-  }
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-void CTrading::_FillSelected(int ticket)
-  {
-   _FreeSelected();
-
-   if(!OrderSelect(ticket,SELECT_BY_TICKET))
-      return;
-
-   _openPrice = OrderOpenPrice();
-   _openTime = OrderOpenTime();
-   _closeTime = OrderCloseTime();
-   _closePrice = OrderClosePrice();
-   _sl = OrderStopLoss();
-   _tp = OrderTakeProfit();
-   _magicNumber = OrderMagicNumber();
-   _lots = OrderLots();
-   _comment = OrderComment();
-   _type = OrderType();
-   _symbol = OrderSymbol();
-
-   _ticket = ticket;
-  }
-
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-double CTrading::CalculatePips(string symbol, double price1, double price2)
-  {
-   double diff;
-
-   if(price1 == price2)
-      return 0;
-
-   if(price1 > price2)
-     {
-      diff = price1 - price2;
-     }
-   else
-     {
-      diff = price2 - price1;
-     }
-
-// If there are 3 or fewer digits (JPY, for example), then return 0.01, which is the pip value.
-   if(SymbolInfoInteger(symbol,SYMBOL_DIGITS) <= 3)
-     {
-      return diff * 100;
-     }
-// If there are 4 or more digits, then return 0.0001, which is the pip value.
-   else
-      if(SymbolInfoInteger(symbol,SYMBOL_DIGITS) >= 4)
-        {
-         return diff * 10000;
-        }
-      else
-         return 0;
-
-   return 0;
-  }
-//+------------------------------------------------------------------+
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-double CTrading::CalculatePipsValue(double lots)
-  {
-   return lots * 10;
-  }
-
-//+------------------------------------------------------------------+
-//|                                                                  |
-//+------------------------------------------------------------------+
-double CalculateDigits(string symbol)
-  {
-// If there are 3 or fewer digits (JPY, for example), then return 0.01, which is the pip value.
-   if(SymbolInfoInteger(symbol,SYMBOL_DIGITS) <= 3)
-     {
-      return(0.01);
-     }
-// If there are 4 or more digits, then return 0.0001, which is the pip value.
-   else
-      if(SymbolInfoInteger(symbol,SYMBOL_DIGITS) >= 4)
+>= 4)
         {
          return(0.0001);
         }
@@ -863,4 +679,4 @@ double CTrading::GetRisk(string method)
    else
       return -1;
   }
-//+------------------------------------------------------------------+
+
