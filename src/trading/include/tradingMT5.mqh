@@ -125,6 +125,20 @@ public:
    datetime          GetOpenTime() {return _openTime;}      //Get the selected trade open time
    datetime          GetCloseTime() {return _closeTime;}    //Get the selected trade close time
    ulong             GetTicket() {return _ticket;}          //Get the selected trade ticket
+<<<<<<< HEAD
+=======
+   double            GetSLPips();                           //Get the selected trade stop loss in pips
+   double            GetTPPips();                           //Get the selected trade take profits in pips
+   int               GetDuration(string method);            //Get the selected trade duration
+   double            GetPL(string method);                  //Get the selected trade profit
+   double            GetRisk(string method);                //Get the selected trade risk
+
+   //CALCULATIONS
+   double            CalculatePips(string symbol, double price1, double price2);                            //Get the pips between two prices
+   double            CalculatePipsValue(double lots);                                                       //Get the pips value of a trade
+   double            CalculateLots(double entryPrice, double slPrice, double riskInMoney, string symbol);   //Get the lot size of a trade from prices
+   double            CalculateLots(double slPips, double riskInMoney, string symbol);                       //Get the lot size of a trade from pips
+>>>>>>> main
 
   } Trading;
 //+------------------------------------------------------------------+
@@ -587,3 +601,245 @@ void CTrading::_FillSelected(ulong ticket)
    _ticket = ticket;
   }
 //+------------------------------------------------------------------+
+<<<<<<< HEAD
+=======
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double CTrading::CalculatePips(string symbol, double price1, double price2)
+  {
+   double diff;
+
+   if(price1 == price2)
+      return 0;
+
+   if(price1 > price2)
+     {
+      diff = price1 - price2;
+     }
+   else
+     {
+      diff = price2 - price1;
+     }
+
+// If there are 3 or fewer digits (JPY, for example), then return 0.01, which is the pip value.
+   if(SymbolInfoInteger(symbol,SYMBOL_DIGITS) <= 3)
+     {
+      return diff * 100;
+     }
+// If there are 4 or more digits, then return 0.0001, which is the pip value.
+   else
+      if(SymbolInfoInteger(symbol,SYMBOL_DIGITS) >= 4)
+        {
+         return diff * 10000;
+        }
+      else
+         return 0;
+
+   return 0;
+  }
+  
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double CTrading::CalculatePipsValue(double lots)
+  {
+   return lots * 10;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double CalculateDigits(string symbol)
+  {
+// If there are 3 or fewer digits (JPY, for example), then return 0.01, which is the pip value.
+   if(SymbolInfoInteger(symbol,SYMBOL_DIGITS) <= 3)
+     {
+      return(0.01);
+     }
+// If there are 4 or more digits, then return 0.0001, which is the pip value.
+   else
+      if(SymbolInfoInteger(symbol,SYMBOL_DIGITS) >= 4)
+        {
+         return(0.0001);
+        }
+      // In all other cases, return 0.
+      else
+         return(0);
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double CTrading::CalculateLots(double slPips,double riskInMoney, string symbol)
+  {
+//--- Verify the input parameters
+   if(slPips <= 0 || riskInMoney <= 0)
+      return(0);
+
+   if(symbol == SYMBOL)
+      symbol = Symbol();
+
+//--- Calculate the LotSize
+   double lotSize = 0;
+   double nTickValue = SymbolInfoDouble(symbol, SYMBOL_TRADE_TICK_VALUE);
+   double moneyAtRisk = riskInMoney;
+
+   if(Digits() == 3 || Digits() == 5)
+      nTickValue *= 10;
+
+   lotSize = moneyAtRisk / (nTickValue * slPips);
+   lotSize = MathRound(lotSize / SymbolInfoDouble(symbol, SYMBOL_VOLUME_STEP)) * SymbolInfoDouble(symbol, SYMBOL_VOLUME_STEP);
+
+   return lotSize; 
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double CTrading::CalculateLots(double entryPrice,double slPrice,double riskInMoney,string symbol)
+  {
+//--- Verify the input parameters
+   if(riskInMoney <= 0 || symbol == "" || entryPrice <=0 || slPrice <=0)
+      return(0);
+
+   double slPips = CalculatePips(symbol, entryPrice, slPrice);
+
+//--- Calculate the LotSize
+   double lotSize = 0;
+   double nTickValue = SymbolInfoDouble(symbol, SYMBOL_TRADE_TICK_VALUE);
+   double moneyAtRisk = riskInMoney;
+
+   if(Digits() == 3 || Digits() == 5)
+      nTickValue *= 10;
+
+   lotSize = moneyAtRisk / (nTickValue * slPips);
+   lotSize = MathRound(lotSize / SymbolInfoDouble(symbol, SYMBOL_VOLUME_STEP)) * SymbolInfoDouble(symbol, SYMBOL_VOLUME_STEP);
+
+   return lotSize;
+  }
+//+------------------------------------------------------------------+
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double CTrading::GetSLPips(void)
+  {
+   return CalculatePips(GetSymbol(), GetOpenPrice(), GetStopLoss());
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double CTrading::GetTPPips(void)
+  {
+   return CalculatePips(GetSymbol(), GetOpenPrice(), GetTakeProfits());
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+int CTrading::GetDuration(string method)
+  {
+   if(GetCloseTime() == 0)
+      return -1;
+
+   datetime diff = GetCloseTime() - GetOpenTime();
+   int durationInSeconds = (int)diff;
+
+   if(method == "S")
+      return durationInSeconds;
+
+   if(method == "M")
+      return durationInSeconds / 60;
+
+   if(method == "H")
+      return durationInSeconds / 60 / 60;
+
+   if(method == "D")
+      return durationInSeconds / 60 / 60 / 24;
+
+   if(method == "W")
+      return durationInSeconds / 60 / 60 / 24 / 7;
+
+   else
+      return -1;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double CTrading::GetPL(string method)
+  {
+   if(OrderSelect(_ticket,SELECT_BY_TICKET))
+      return -1;
+
+   if(GetCloseTime() == 0)
+      return -1;
+
+   double pl = OrderProfit();
+
+   if(method == "$")
+      return pl;
+
+   if(method == "%")
+      return pl / AccountInfoDouble(ACCOUNT_BALANCE) * 100;
+
+   if(method == "P")
+     {
+      double pips = CalculatePips(GetSymbol(),GetClosePrice(),GetOpenPrice());
+
+      if(GetClosePrice() < GetOpenPrice() && pips > 0)
+         return -pips;
+     }
+
+   if(method == "R")
+     {
+      if(GetClosePrice() < GetOpenPrice())
+         return -1;
+
+      double slPips = CalculatePips(GetSymbol(),GetOpenPrice(),GetStopLoss());
+      double plPips = CalculatePips(GetSymbol(),GetClosePrice(),GetOpenPrice());
+
+      return NormalizeDouble(plPips / slPips,1);
+     }
+   else
+      return -1;
+  }
+
+//+------------------------------------------------------------------+
+//|                                                                  |
+//+------------------------------------------------------------------+
+double CTrading::GetRisk(string method)
+  {
+   if(OrderSelect(_ticket,SELECT_BY_TICKET))
+      return -1;
+
+   if(GetStopLoss() == 0)
+      return -1;
+
+   if(method == "$")
+     {
+      return CalculatePips(GetSymbol(),GetOpenPrice(),GetStopLoss()) * GetLots() * 10;
+     }
+
+   if(method == "%")
+      return CalculatePips(GetSymbol(),GetOpenPrice(),GetStopLoss()) * GetLots() * 10 / AccountInfoDouble(ACCOUNT_BALANCE) * 100;
+
+   if(method == "P")
+     {
+      double pips = CalculatePips(GetSymbol(),GetOpenPrice(),GetStopLoss());
+
+      return pips;
+     }
+
+   if(method == "R")
+     {
+      return 1;
+     }
+   else
+      return -1;
+  }
+//+------------------------------------------------------------------+
+>>>>>>> main

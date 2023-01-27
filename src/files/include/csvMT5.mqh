@@ -77,7 +77,11 @@ string CCSVFile::ReadCell(int row,int col)
    if(m_columns < 1 || m_rows < 1)
    {
       Print("ERR_CONSTRUCTOR_NOT_CALLED " + __FUNCTION__);
+<<<<<<< HEAD
       return false;
+=======
+      return "-1";
+>>>>>>> main
    }
 
    int handle;
@@ -91,7 +95,11 @@ string CCSVFile::ReadCell(int row,int col)
    if(handle == INVALID_HANDLE)
     {
       Print("ERR_FILE_OPEN " + __FUNCTION__);
+<<<<<<< HEAD
       return false;
+=======
+      return "-1";
+>>>>>>> main
     }
 
    int currCol = 1;

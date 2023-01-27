@@ -83,13 +83,19 @@ int OnInit()
    datetime          GetCloseTime();        //Get the selected trade close time
    double            GetSLPips();           //Get the selected trade stop loss in pips
    double            GetTPPips();           //Get the selected trade take profits in pips
-   string            GetDuration(string method); //Get the selected trade duration
+   int               GetDuration(string method); //Get the selected trade duration
    double            GetPL(string method);  //Get the selected trade profit
    double            GetRisk(string method); //Get the selected trade risk
+   
+   //CALCULATIONS
+   double            CalculatePips(string symbol, double price1, double price2);     //Get the pips between two prices
+   double            CalculatePipsValue(double lots);                 //Get the pips value of a trade
+   double            CalculateLots(double entryPrice, double slPrice, double riskInMoney, string symbol);     //Get the lot size of a trade from prices
+   double            CalculateLots(double slPips, double riskInMoney, string symbol);                         //Get the lot size of a trade from pips
 ```
 
 # Methods Parameters
-## Trading.Select(int index, int selectMethod = BY_INDEX, int pool = POOL_MAIN)
+## Trading.Select()
 ### index
 - The index position or ticket of the trade you want to select
 
@@ -97,16 +103,15 @@ int OnInit()
 - `BY_INDEX` - Select the trade by index position
 - `BY_TICKET` - Select the trade by ticket
 
-## Trading.GetDuration(string method)
+## Trading.GetDuration()
 ### method
 - `S` - Return the duration in seconds
 - `M` - Return the duration in minutes
 - `H` - Return the duration in hours
 - `D` - Return the duration in days
 - `W` - Return the duration in weeks
-- `HMS` - Return the duration in hours, minutes and seconds
 
-## Trading.GetPL(string method) & Trading.GetRisk(string method)
+## Trading.GetPL() & Trading.GetRisk()
 ### method
 - `$` - Return the profit in dollars
 - `P` - Return the profit in pips
