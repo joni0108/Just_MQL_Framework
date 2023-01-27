@@ -670,21 +670,24 @@ double CalculateDigits(string symbol)
 double CTrading::CalculateLots(double slPips,double riskInMoney, string symbol)
   {
 //--- Verify the input parameters
-   if(slPips <= 0 || riskInMoney <= 0 || symbol == "")
+   if(slPips <= 0 || riskInMoney <= 0)
       return(0);
+
+   if(symbol == SYMBOL)
+      symbol = Symbol();
 
 //--- Calculate the LotSize
    double lotSize = 0;
-   double nTickValue = MarketInfo(symbol, MODE_TICKVALUE);
+   double nTickValue = SymbolInfoDouble(symbol, SYMBOL_TRADE_TICK_VALUE);
    double moneyAtRisk = riskInMoney;
 
-   if(Digits == 3 || Digits == 5)
+   if(Digits() == 3 || Digits() == 5)
       nTickValue *= 10;
 
    lotSize = moneyAtRisk / (nTickValue * slPips);
-   lotSize = MathRound(lotSize / MarketInfo(symbol, MODE_LOTSTEP)) * MarketInfo(symbol, MODE_LOTSTEP);
+   lotSize = MathRound(lotSize / SymbolInfoDouble(symbol, SYMBOL_VOLUME_STEP)) * SymbolInfoDouble(symbol, SYMBOL_VOLUME_STEP);
 
-   return lotSize;
+   return lotSize; 
   }
 
 //+------------------------------------------------------------------+
@@ -700,14 +703,14 @@ double CTrading::CalculateLots(double entryPrice,double slPrice,double riskInMon
 
 //--- Calculate the LotSize
    double lotSize = 0;
-   double nTickValue = MarketInfo(symbol, MODE_TICKVALUE);
+   double nTickValue = SymbolInfoDouble(symbol, SYMBOL_TRADE_TICK_VALUE);
    double moneyAtRisk = riskInMoney;
 
-   if(Digits == 3 || Digits == 5)
+   if(Digits() == 3 || Digits() == 5)
       nTickValue *= 10;
 
    lotSize = moneyAtRisk / (nTickValue * slPips);
-   lotSize = MathRound(lotSize / MarketInfo(symbol, MODE_LOTSTEP)) * MarketInfo(symbol, MODE_LOTSTEP);
+   lotSize = MathRound(lotSize / SymbolInfoDouble(symbol, SYMBOL_VOLUME_STEP)) * SymbolInfoDouble(symbol, SYMBOL_VOLUME_STEP);
 
    return lotSize;
   }

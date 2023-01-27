@@ -10,7 +10,7 @@
 //+---------------------------------------------------------------------+
 #property copyright "Copyright 2022-2025, Just Up Coding LLC"
 #property link      "http://www.justup.us"
-#property version   "1.1"
+#property version   "2.0"
 
 #define INCLUDE_LIBRARIES
 
