@@ -48,11 +48,7 @@ public:
 //+------------------------------------------------------------------+
 //|                                                                  |
 //+------------------------------------------------------------------+
-<<<<<<< HEAD
-void CTicks::Constructor(string symbol,string timeframe)
-=======
-void CTicks::Create(string symbol,string timeframe)
->>>>>>> main
+
   {
    this.m_timeframe = timeframe;
    this.m_symbol = symbol;

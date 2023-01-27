@@ -125,8 +125,7 @@ public:
    datetime          GetOpenTime() {return _openTime;}      //Get the selected trade open time
    datetime          GetCloseTime() {return _closeTime;}    //Get the selected trade close time
    ulong             GetTicket() {return _ticket;}          //Get the selected trade ticket
-<<<<<<< HEAD
-=======
+
    double            GetSLPips();                           //Get the selected trade stop loss in pips
    double            GetTPPips();                           //Get the selected trade take profits in pips
    int               GetDuration(string method);            //Get the selected trade duration
@@ -138,7 +137,7 @@ public:
    double            CalculatePipsValue(double lots);                                                       //Get the pips value of a trade
    double            CalculateLots(double entryPrice, double slPrice, double riskInMoney, string symbol);   //Get the lot size of a trade from prices
    double            CalculateLots(double slPips, double riskInMoney, string symbol);                       //Get the lot size of a trade from pips
->>>>>>> main
+
 
   } Trading;
 //+------------------------------------------------------------------+
@@ -601,8 +600,7 @@ void CTrading::_FillSelected(ulong ticket)
    _ticket = ticket;
   }
 //+------------------------------------------------------------------+
-<<<<<<< HEAD
-=======
+
 
 //+------------------------------------------------------------------+
 //|                                                                  |
@@ -841,5 +839,4 @@ double CTrading::GetRisk(string method)
    else
       return -1;
   }
-//+------------------------------------------------------------------+
->>>>>>> main
+
