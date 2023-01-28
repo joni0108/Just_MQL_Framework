@@ -16,7 +16,7 @@ A cross-language framework that allows you to code your scripts and EAs only onc
 - [x] Account Information
 - [x] Terminal Information 
 - [x] Symbol Information
-- [ ] Web Sockets
+- [x] Web Sockets
 
 ### Utilities
 - [x] Discord Post Connection
