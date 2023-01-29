@@ -1,5 +1,5 @@
 # CSymbol class
-This class return information about the symbol
+This class return information about the symbol.
 
 ## Usage
 Before using the class methods you must call `Symbol.Select("Symbol name")` to select the symbol.

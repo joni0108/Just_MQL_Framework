@@ -1,5 +1,5 @@
 # CTerminalInfo class
-This class will return all the terminal related things.
+This class will return all the terminal related things. You can use the pre-defined object `TerminalInfo`.
 
 ## Class Methods
 ```cpp
