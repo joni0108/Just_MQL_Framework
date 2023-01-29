@@ -14,9 +14,9 @@ A cross-language framework that allows you to code your scripts and EAs only onc
 - [x] Candlesticks Information
 - [x] Errors Description
 - [x] Account Information
-- [ ] Terminal Information 
-- [ ] Symbol Information
-- [ ] Web Sockets
+- [x] Terminal Information 
+- [x] Symbol Information
+- [x] Web Sockets
 
 ### Utilities
 - [x] Discord Post Connection
@@ -89,6 +89,8 @@ The framework has the following classes:
 - [CTrading](https://github.com/justupcorp/Just_MQL_Framework/wiki/CTrading) - To handle and control all the trading activities
 - [CIndicators](https://github.com/justupcorp/Just_MQL_Framework/wiki/CIndicators) - To handle indicators in both versiones using the MQL4 structure
 - [CError](https://github.com/justupcorp/Just_MQL_Framework/wiki/CError) - To handle MQL and internal framework errors
+- [CTerminalInfo](https://github.com/justupcorp/Just_MQL_Framework/wiki/CTerminalInfo) - To get terminal related information
+- [CSymbol](https://github.com/justupcorp/Just_MQL_Framework/wiki/CSymbol) - To get information about the symbol selected
 
 <br>
 

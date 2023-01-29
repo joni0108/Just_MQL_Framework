@@ -15,12 +15,14 @@
 #define INCLUDE_LIBRARIES
 
 //+---------------------------------------------------------------------+
-#include "/src/account/account.mqh"
+#include "src/account/account.mqh"
 #include "src/files/files.mqh"
 #include "src/ticks/ticks.mqh"
 #include "src/terminal/terminal.mqh"
 #include "src/trading/trading.mqh"
 #include "src/indicators/indicators.mqh"
+#include "src/symbol/symbol.mqh"
+#include "src/terminalInfo/terminalInfo.mqh"
 
 #ifdef INCLUDE_LIBRARIES
    #include "librariesList.mqh"
