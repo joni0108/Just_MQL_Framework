@@ -1,0 +1,1 @@
+:: This file will setup the framework in all your metatraders data folders
