@@ -19,6 +19,9 @@ public:
    int               Highest(int from, int to, E_CANDLE_MODE mode);
    int               Lowest(int from, int to, E_CANDLE_MODE mode);
    bool              IsBullish(int pos);
+   double            Ask();
+   double            Bid();
+   double            Volume(int pos);
   } Ticks;
 
 //--- Class Constructor
@@ -129,4 +132,21 @@ bool CTicks::IsBullish(int pos)
   {
    return iClose(m_symbol, m_timeframe, pos) > iOpen(m_symbol, m_timeframe, pos);
   }
-//+------------------------------------------------------------------+
+
+//--- Ask() method
+double CTicks::Ask()
+  {
+   return MarketInfo(m_symbol, MODE_ASK);
+  }
+
+//--- Bid() method
+double CTicks::Bid()
+  {
+   return MarketInfo(m_symbol, MODE_BID);
+  }
+
+//--- Volume() method
+double CTicks::Volume(int pos)
+  {
+   return iVolume(m_symbol, m_timeframe, pos);
+  }

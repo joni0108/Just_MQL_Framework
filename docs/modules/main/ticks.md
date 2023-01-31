@@ -16,6 +16,9 @@ The class name is `CTicks`, you can declare a new object of this class or use th
 - `double Highest()` [->](ticks-highest.md) Returns the highest price of the candle.
 - `double Lowest()` [->](ticks-lowest.md) Returns the lowest price of the candle.
 - `bool IsBullish()` [->](ticks-isbullish.md) Returns true if the candle is bullish.
+- `double Ask()` [->](ticks-ask.md) Returns the ask price of the candle.
+- `double Bid()` [->](ticks-bid.md) Returns the bid price of the candle.
+- `double Volume()` [->](ticks-volume.md) Returns the volume of the candle.
 
 
 ## Usage Steps
@@ -55,6 +58,9 @@ int OnInit()
     Print("Ticks.Highest(10, 0, HIGH) = ", candle.Highest(10, 0, HIGH));
     Print("Ticks.Lowest(10, 0, LOW) = ", candle.Lowest(10, 0, LOW));
     Print("Ticks.IsBullish(1) = ", candle.IsBullish(1));
+    Print("Ticks.Ask(0) = ", candle.Ask(0));
+    Print("Ticks.Bid(0) = ", candle.Bid(0));
+    Print("Ticks.Volume(0) = ", candle.Volume(0));
     return(INIT_SUCCEEDED);
 }
 ```

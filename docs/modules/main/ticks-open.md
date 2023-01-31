@@ -35,7 +35,7 @@ This example will return the open price of the candle in the selected symbol and
 //--- OnInit Function ---
 int OnInit()
 {
-    Ticks.Select(CURRENT, Symbol());
+    Ticks.Select(PERIOD_CURRENT, Symbol());
     Print("Ticks.Open(0) = ", Ticks.Open(0));
 
     return INIT_SUCCEEDED;

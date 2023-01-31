@@ -37,7 +37,7 @@ For this example we will use the pre-defined class object `Ticks`.
 //--- OnInit Function ---
 int OnInit()
 {
-    Ticks.Select(CURRENT, Symbol());
+    Ticks.Select(PERIOD_CURRENT, Symbol());
     Print("Ticks.IsBullish(1) = ", Ticks.IsBullish(1));
 
     return INIT_SUCCEEDED;

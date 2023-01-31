@@ -35,7 +35,7 @@ This example will return the high of the candle in the selected symbol and timef
 //--- OnInit Function ---
 int OnInit()
 {
-    Ticks.Select(CURRENT, Symbol());
+    Ticks.Select(PERIOD_CURRENT, Symbol());
     Print("Ticks.High(0) = ", Ticks.High(0));
 
     return INIT_SUCCEEDED;

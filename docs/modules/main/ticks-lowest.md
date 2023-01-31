@@ -39,7 +39,7 @@ For this example we will use the pre-defined class object `Ticks`.
 //--- OnInit Function ---
 int OnInit()
 {
-    Ticks.Select(CURRENT, Symbol());
+    Ticks.Select(PERIOD_CURRENT, Symbol());
     Print("Ticks.Lowest(10, 0, OPEN) = ", Ticks.Lowest(10, 0, OPEN));
 
     return INIT_SUCCEEDED;
