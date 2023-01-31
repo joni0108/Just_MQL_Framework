@@ -1,4 +1,4 @@
-# High | Method
+# High() | Method
 `From class CTicks` [->](ticks.md) <br>
 Returns the high of the candle in the selected symbol and timeframe and given position.
 

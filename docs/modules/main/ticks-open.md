@@ -1,4 +1,4 @@
-# Open | Method
+# Open() | Method
 `From class CTicks` [->](ticks.md) <br>
 Returns the open of the candle in the selected symbol and timeframe and given position.
 

@@ -21,7 +21,7 @@ The class name is `CTicks`, you can declare a new object of this class or use th
 ## Usage Steps
 1. Declare the new class object using `CTicks <obj_name>`. If you want to use the pre-defined class object `Ticks`, do not declare the new class object.
 2. Use `<obj_name>.Select()` or `Ticks.Create()` method to select a symbol and timeframe.
-3. Use `<obj_name>.<Method>()` or `Name.<Method>()` to use any of the class methods.
+3. Use `<obj_name>.<Method>()` or `Ticks.<Method>()` to use any of the class methods.
 
 ### Notes
 You must select a symbol and timeframe before using the other class methods. <br>

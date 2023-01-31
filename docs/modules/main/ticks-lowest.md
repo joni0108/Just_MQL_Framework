@@ -1,4 +1,4 @@
-# Lowest | Method
+# Lowest() | Method
 `From class CTicks` [->](ticks.md) <br>
 Returns the highest value of the candle in the selected symbol and timeframe, given positions and property type.
 

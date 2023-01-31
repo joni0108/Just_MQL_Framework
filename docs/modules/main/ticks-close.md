@@ -1,4 +1,4 @@
-# Close | Method
+# Close() | Method
 `From class CTicks` [->](ticks.md) <br>
 Returns the close price of the candle in the selected symbol and timeframe and given position.
 
