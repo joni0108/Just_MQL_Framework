@@ -1,7 +1,7 @@
 # Candle Modes | Enumeration
 Candles Modes enumeration identifiers are used in `CTicks->`[Highest()](../modules/main/ticks-highest.md) and `CTicks->`[Lowest()](../modules/main/ticks-lowest.md).
 
-### ENUM_NAME
+### E_CANDLES
 | ID       | Description                   | Type |
 | :------- | :---------------------------- | :--- |
 | `OPEN`   | The open price of the candle  | int  |
