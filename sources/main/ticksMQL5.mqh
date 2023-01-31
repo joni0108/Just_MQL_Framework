@@ -6,12 +6,12 @@
 class CTicks
   {
 private:
-   E_TIMEFRAMES      m_timeframe;
+   ENUM_TIMEFRAMES   m_timeframe;
    string            m_symbol;
 public:
                      CTicks();
                     ~CTicks();
-   void              Select(E_TIMEFRAMES timeframe, string symbol);
+   void              Select(ENUM_TIMEFRAMES timeframe, string symbol);
    double            High(int pos);
    double            Low(int pos);
    double            Open(int pos);
@@ -32,7 +32,7 @@ CTicks::~CTicks()
   }
 
 //--- Select() method
-void CTicks::Select(E_TIMEFRAMES timeframe, string symbol)
+void CTicks::Select(ENUM_TIMEFRAMES timeframe, string symbol)
   {
    m_timeframe = timeframe;
    m_symbol = symbol;
