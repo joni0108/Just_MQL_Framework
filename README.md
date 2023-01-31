@@ -39,7 +39,7 @@ In the following example we include from the module `Main` the `ticks` sub-modul
 #include <Just_MQL_Framework/modules/main.mqh>
 ```
 
-## Table of Modules
+## Available modules
 The following table have all the modules, sub-modules and the description of them. <br>
 
 | Modules      | Sub-Modules          | Description                                                             |
@@ -70,5 +70,7 @@ The following table have all the modules, sub-modules and the description of the
 | ->           | SND                  | Handle Supply & Demand Zones                                            |
 | ->           | OBs                  | Handle Order Blocks                                                     |
 
+See the list in the `wiki` by clicking [here](docs/Home.md/#modules-and-classes)
+
 ### Usage
-In order to undertand how to use this framework, please go to our repository [wiki](https://github.com/justupcorp/Just_MQL_Framework/wiki) or to our in-files documentation by clicking [here](docs/Home.md).
+In order to undertand how to use this framework, please go to our repository [wiki](https://github.com/justupcorp/Just_MQL_Framework/wiki) or to our in-files documentation by clicking [here](docs/Home.md/#installation).

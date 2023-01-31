@@ -34,7 +34,7 @@ Any notes?
 In this example we will initialize, use some methods, and destroy a class object.
 
 ```cpp
-//--- EXAMPLE OF METHOD __METHOD__ FROM CLASS __CLASS__ ---
+//--- EXAMPLE OF CLASS ---
 #property copyright "Just Up Corp"
 #property strict
 

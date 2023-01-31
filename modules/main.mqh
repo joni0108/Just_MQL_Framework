@@ -9,3 +9,5 @@
 This file will include only the required files for the framework to work cross-platform.
 To include other modules, use their respective files.
 */
+
+#include "main/ticks.mqh"
