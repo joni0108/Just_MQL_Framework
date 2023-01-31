@@ -22,6 +22,7 @@ public:
    double            Ask();
    double            Bid();
    double            Volume(int pos);
+   datetime          Time(int pos);
   } Ticks;
 
 //--- Class Constructor
@@ -149,4 +150,10 @@ double CTicks::Bid()
 double CTicks::Volume(int pos)
   {
    return iVolume(m_symbol, m_timeframe, pos);
+  }
+
+//--- Time() method
+datetime CTicks::Time(int pos)
+  {
+   return iTime(m_symbol, m_timeframe, pos);
   }

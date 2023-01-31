@@ -19,6 +19,7 @@ The class name is `CTicks`, you can declare a new object of this class or use th
 - `double Ask()` [->](ticks-ask.md) Returns the ask price of the candle.
 - `double Bid()` [->](ticks-bid.md) Returns the bid price of the candle.
 - `double Volume()` [->](ticks-volume.md) Returns the volume of the candle.
+- `double Time()` [->](ticks-time.md) Returns the time of the candle.
 
 
 ## Usage Steps
@@ -61,6 +62,7 @@ int OnInit()
     Print("Ticks.Ask(0) = ", candle.Ask(0));
     Print("Ticks.Bid(0) = ", candle.Bid(0));
     Print("Ticks.Volume(0) = ", candle.Volume(0));
+    Print("Ticks.Time(1) = ", candle.Time(1));
     return(INIT_SUCCEEDED);
 }
 ```
