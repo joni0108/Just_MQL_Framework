@@ -12,7 +12,7 @@ double Lowest(int from, int to, E_CANDLE_MODE mode);
 | :--------- | :-------------: | :-------------------------------------------------------------------------------------------------------- |
 | `from`     |      [int]      | The position of the candle                                                                                |
 | `to`       |      [int]      | The position of the candle                                                                                |
-| `mode`     | [E_CANDLE_MODE] | The property type of the candle from the [E_TIMEFRAMES](../../enumerations/e_candle_mode.md) enumeration. |
+| `mode`     | [E_CANDLE_MODE] | The property type of the candle from the [E_CANDLES](../../enumerations/e_candle_mode.md) enumeration. |
 
 ## Return Value
 `int`: <br>
