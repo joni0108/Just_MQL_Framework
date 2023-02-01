@@ -6,7 +6,6 @@ Replaces the ArrayInitialize() from MQL4 and MQL5.
 //Declaration with its parameters
 int Initialize(double &array[], double value);
 int Initialize(int &array[], int value);
-int Initialize(string &array[], string value);
 int Initialize(datetime &array[], datetime value);
 int Initialize(color &array[], color value);
 int Initialize(bool &array[], bool value);
