@@ -16,7 +16,7 @@ double StrToDouble(string value)
 
 int StrToInteger(string value)
 {
-    return StringToInteger((long)value);
+    return (int)StringToInteger(value);
 }
 
 datetime StrToTime(string value)
