@@ -15,14 +15,6 @@ The class name is `Arrays`, you can declare a new object of this class or use th
 - `int Maximum()` [->](arrays-maximum.md) The ArrayMaximum() from MQL4 and MQL5.
 - `int ArraySort()` [->](arrays-arraySort.md) The ArraySort() from MQL4 and MQL5.
 
-### Setters
-- `SetName(string name)` -> Sets the **name** property of the class.
-- `SetActive(bool active)` -> Sets the **IsActive** property of the class.
-
-### Getters
-- [string] `GetName()` -> Returns the **name** property of the class.
-- [bool] `GetActive()` -> Returns the **IsActive** property of the class.
-
 ## Usage Steps
 1. Declare the new class object using `CName <obj_name>`. If you want to use the pre-defined class object `Name`, do not declare the new class object.
 2. Use `<obj_name>.Create()` or `Name.Create()` method to initialize the class object in the `OnInit()` function.

@@ -1,6 +1,6 @@
 # Select() | Method
 `From class CTicks` [->](ticks.md) <br>
-Fill the class properties `m_timeframe` and `m_symbol` for further use of the other class methods of the class.
+Fills the class properties `m_timeframe` and `m_symbol` for further use of the other class methods of the class.
 
 ```cpp
 //Declaration with its parameters

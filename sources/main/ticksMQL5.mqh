@@ -153,7 +153,7 @@ double CTicks::Bid()
 //--- Volume() method
 double CTicks::Volume(int pos)
   {
-   return iVolume(m_symbol, m_timeframe, pos);
+   return (double)iVolume(m_symbol, m_timeframe, pos);
   }
 
 //--- Time() method

@@ -103,12 +103,13 @@ In the following example, you will be including the whole `main` module, and the
 # Modules and Classes
 Below there is a list of the current modules and classes in this version release.
 
-| Modules | Sub-Modules                    | Description                                                               |
-| :------ | :----------------------------- | :------------------------------------------------------------------------ |
-| `Main`  |                                | This module allows the full compatibility of MQL4 & MQL5 in one code.     |
-| ->      | [Ticks](modules/main/ticks.md) | Handle all the candlesticks informations                                  |
-| ->      | [Info](modules/main/info.md)   | Handle all the information of the terminal and account                    |
-| ->      | [Arrays](modules/main/arrays.md)    | Handle all arrays functions that are not compatible between MQL4 and MQL5 |
+| Modules | Sub-Modules                      | Description                                                               |
+| :------ | :------------------------------- | :------------------------------------------------------------------------ |
+| `Main`  |                                  | This module allows the full compatibility of MQL4 & MQL5 in one code.     |
+| ->      | [Ticks](modules/main/ticks.md)   | Handle all the candlesticks informations                                  |
+| ->      | [Info](modules/main/info.md)     | Handle all the information of the terminal and account                    |
+| ->      | [Arrays](modules/main/arrays.md) | Handle all arrays functions that are not compatible between MQL4 and MQL5 |
+| ->      | [Symbol](modules/main/symbol.md) | Handle all the symbol informations.                                       |
 
 # Improving the Framework
 You can improve the framework in too much ways:

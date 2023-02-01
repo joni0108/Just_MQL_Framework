@@ -97,13 +97,13 @@ bool CInfo::GetBoolean(ENUM_INFO_BOOL info)
         res = TerminalInfoInteger(TERMINAL_FTP_ENABLED);
         break;
     case EXPERT_INFO_IS_TESTING:
-        res = MQLInfoInteger(MQL5_TESTING);
+        res = MQLInfoInteger(MQL_TESTER);
         break;
     case EXPERT_INFO_IN_VISUAL_MODE:
-        res = MQLInfoInteger(MQL5_VISUAL_MODE);
+        res = MQLInfoInteger(MQL_VISUAL_MODE);
         break;
     case EXPERT_INFO_IN_OPTIMIZATION:
-        res = MQLInfoInteger(MQL5_OPTIMIZATION);
+        res = MQLInfoInteger(MQL_OPTIMIZATION);
         break;
     
     
