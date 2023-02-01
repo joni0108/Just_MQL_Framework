@@ -108,7 +108,7 @@ Below there is a list of the current modules and classes in this version release
 | `Main`  |                                | This module allows the full compatibility of MQL4 & MQL5 in one code.     |
 | ->      | [Ticks](modules/main/ticks.md) | Handle all the candlesticks informations                                  |
 | ->      | [Info](modules/main/info.md)   | Handle all the information of the terminal and account                    |
-| ->      | [Arrays](modules/arrays.md)    | Handle all arrays functions that are not compatible between MQL4 and MQL5 |
+| ->      | [Arrays](modules/main/arrays.md)    | Handle all arrays functions that are not compatible between MQL4 and MQL5 |
 
 # Improving the Framework
 You can improve the framework in too much ways:
