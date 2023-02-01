@@ -10,7 +10,7 @@ string GetString(ENUM_INFO_STRING info);
 ## Parameters
 | Parameters |        Type        | Description                                                                                            |
 | :--------- | :----------------: | :----------------------------------------------------------------------------------------------------- |
-| `info`     | [ENUM_INFO_STRING] | The property from the [ENUM_INFO_STRING](../../enumerations/e_enum_info/#ENUM_INFO_STRING) enumerator. |
+| `info`     | [ENUM_INFO_STRING] | The property from the [ENUM_INFO_STRING](../../enumerations/e_enum_info.md/#ENUM_INFO_STRING) enumerator. |
 
 ## Return Value
 `string`: <br>

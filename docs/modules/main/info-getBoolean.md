@@ -10,7 +10,7 @@ string GetBoolean(ENUM_INFO_BOOL info);
 ## Parameters
 | Parameters |        Type        | Description                                                                                            |
 | :--------- | :----------------: | :----------------------------------------------------------------------------------------------------- |
-| `info`     | [ENUM_INFO_BOOL] | The property from the [ENUM_INFO_BOOL](../../enumerations/e_enum_info/#ENUM_INFO_BOOL) enumerator. |
+| `info`     | [ENUM_INFO_BOOL] | The property from the [ENUM_INFO_BOOL](../../enumerations/e_enum_info.md/#ENUM_INFO_BOOL) enumerator. |
 
 ## Return Value
 `bool`: <br>

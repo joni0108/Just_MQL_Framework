@@ -10,7 +10,7 @@ string GetDouble(ENUM_INFO_DOUBLE info);
 ## Parameters
 | Parameters |        Type        | Description                                                                                            |
 | :--------- | :----------------: | :----------------------------------------------------------------------------------------------------- |
-| `info`     | [ENUM_INFO_DOUBLE] | The property from the [ENUM_INFO_DOUBLE](../../enumerations/e_enum_info/#ENUM_INFO_DOUBLE) enumerator. |
+| `info`     | [ENUM_INFO_DOUBLE] | The property from the [ENUM_INFO_DOUBLE](../../enumerations/e_enum_info.md/#ENUM_INFO_DOUBLE) enumerator. |
 
 ## Return Value
 `double`: <br>

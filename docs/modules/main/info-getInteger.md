@@ -10,7 +10,7 @@ string GetInteger(ENUM_INFO_INTEGER info);
 ## Parameters
 | Parameters |        Type         | Description                                                                                              |
 | :--------- | :-----------------: | :------------------------------------------------------------------------------------------------------- |
-| `info`     | [ENUM_INFO_INTEGER] | The property from the [ENUM_INFO_INTEGER](../../enumerations/e_enum_info/#ENUM_INFO_INTEGER) enumerator. |
+| `info`     | [ENUM_INFO_INTEGER] | The property from the [ENUM_INFO_INTEGER](../../enumerations/e_enum_info.md/#ENUM_INFO_INTEGER) enumerator. |
 
 ## Return Value
 `int`: <br>
