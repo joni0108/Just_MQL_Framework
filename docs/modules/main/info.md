@@ -32,17 +32,17 @@ In this example we will initialize, use some methods.
 #include <Just_MQL_Framework/modules/main/info.mqh>
 
 //--- Creating the class objects ---
-CInfo info;
+CInfo infoAT;
 
 //--- OnInit Function ---
 int OnInit()
 {
     //--- Using some methods ---
-    Print("Account Balance = ", info.GetDouble(ACCOUNT_INFO_BALANCE));
-    Print("Account Equity = ", info.GetDouble(ACCOUNT_INFO_EQUITY));
-    Print("Terminal Language = ", info.GetString(TERMINAL_INFO_LANGUAGE));
-    Print("Terminal Company = ", info.GetString(TERMINAL_INFO_COMPANY));
-    Print("Account Login Number  = ", info.GetInteger(ACCOUNT_INFO_LOGIN));
+    Print("Account Balance = ", infoAT.GetDouble(ACCOUNT_INFO_BALANCE));
+    Print("Account Equity = ", infoAT.GetDouble(ACCOUNT_INFO_EQUITY));
+    Print("Terminal Language = ", infoAT.GetString(TERMINAL_INFO_LANGUAGE));
+    Print("Terminal Company = ", infoAT.GetString(TERMINAL_INFO_COMPANY));
+    Print("Account Login Number  = ", infoAT.GetInteger(ACCOUNT_INFO_LOGIN));
     return(INIT_SUCCEEDED);
 }
 ```
