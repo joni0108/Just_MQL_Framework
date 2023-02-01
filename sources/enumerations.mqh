@@ -1,5 +1,12 @@
-//--- Enumerations List
+//--- Definitions
+#ifndef MODE_ASCEND
+    #define MODE_ASCEND 0
+#endif
+#ifndef MODE_DESCEND
+    #define MODE_DESCEND 1
+#endif
 
+//--- Enumerations List
 enum E_CANDLE_MODE
 {
     OPEN = 0,     // Open price
@@ -34,6 +41,9 @@ enum ENUM_INFO_BOOL
     TERMINAL_INFO_EMAIL_ALLOWED = 3,        // Terminal allows sending emails
     TERMINAL_INFO_NOTIFICATIONS_ALLOWED = 4,// Terminal allows sending notifications and MQ ID setup for push notifications
     TERMINAL_INFO_FTP_ALLOWED = 5,          // Terminal allows using FTP
+    EXPERT_INFO_IS_TESTING = 6,             // Expert is running in the strategy tester
+    EXPERT_INFO_IN_VISUAL_MODE = 7,         // Expert is running in the visual mode of the strategy tester
+    EXPERT_INFO_IN_OPTIMIZATION = 8,        // Expert is running in the optimization mode of the strategy tester
 };
 
 enum ENUM_INFO_INTEGER

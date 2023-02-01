@@ -96,6 +96,16 @@ bool CInfo::GetBoolean(ENUM_INFO_BOOL info)
     case TERMINAL_INFO_FTP_ALLOWED:
         res = TerminalInfoInteger(TERMINAL_FTP_ENABLED);
         break;
+    case EXPERT_INFO_IS_TESTING:
+        res = MQLInfoInteger(MQL5_TESTING);
+        break;
+    case EXPERT_INFO_IN_VISUAL_MODE:
+        res = MQLInfoInteger(MQL5_VISUAL_MODE);
+        break;
+    case EXPERT_INFO_IN_OPTIMIZATION:
+        res = MQLInfoInteger(MQL5_OPTIMIZATION);
+        break;
+    
     
     default: res = false;
         break;
