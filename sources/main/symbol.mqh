@@ -27,5 +27,5 @@ double CSymbol::GetDouble(ENUM_SYMBOL_INFO_DOUBLE info)
 
 int CSymbol::GetInteger(ENUM_SYMBOL_INFO_INTEGER info)
 {
-    return SymbolInfoInteger(_symbol, info);
+    return (int)SymbolInfoInteger(_symbol, info);
 }

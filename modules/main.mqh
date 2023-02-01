@@ -12,3 +12,6 @@ To include other modules, use their respective files.
 
 #include "main/ticks.mqh"
 #include "main/info.mqh"
+#include "main/arrays.mqh"
+#include "main/symbol.mqh"
+#include "main/mqlExtras.mqh"
