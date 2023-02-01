@@ -25,7 +25,7 @@ You must use the `Select()` method before using this method in order to not get 
 This example will return the close price of the candle in the selected symbol and timeframe and given position. For this example we will use the pre-defined class object `Ticks`.
 
 ```cpp
-//--- EXAMPLE OF METHOD __METHOD__ FROM CLASS __CLASS__ ---
+//--- EXAMPLE OF METHOD Close() FROM CLASS CTicks ---
 #property copyright "Just Up Corp"
 #property strict
 

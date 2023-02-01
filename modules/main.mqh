@@ -11,3 +11,4 @@ To include other modules, use their respective files.
 */
 
 #include "main/ticks.mqh"
+#include "main/info.mqh"

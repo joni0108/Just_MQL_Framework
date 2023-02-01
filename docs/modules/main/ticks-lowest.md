@@ -29,7 +29,7 @@ It returns the position of the candle with the lowest open price of the last 10 
 For this example we will use the pre-defined class object `Ticks`.
 
 ```cpp
-//--- EXAMPLE OF METHOD __METHOD__ FROM CLASS __CLASS__ ---
+//--- EXAMPLE OF METHOD Lowest() FROM CLASS CTicks ---
 #property copyright "Just Up Corp"
 #property strict
 

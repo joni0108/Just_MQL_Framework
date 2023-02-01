@@ -23,7 +23,7 @@ You must use the `Select()` method before using this method in order to not get 
 This example will return the bid price of the current symbol. For this example we will use the pre-defined class object `Ticks`.
 
 ```cpp
-//--- EXAMPLE OF METHOD __METHOD__ FROM CLASS __CLASS__ ---
+//--- EXAMPLE OF METHOD Bid() FROM CLASS CTicks ---
 #property copyright "Just Up Corp"
 #property strict
 

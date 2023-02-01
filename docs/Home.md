@@ -107,6 +107,7 @@ Below there is a list of the current modules and classes in this version release
 | :------ | :----------------------------- | :-------------------------------------------------------------------- |
 | `Main`  |                                | This module allows the full compatibility of MQL4 & MQL5 in one code. |
 | ->      | [Ticks](modules/main/ticks.md) | Handle all the candlesticks informations                              |
+| ->      | [Info](modules/main/info.md)   | Handle all the information of the terminal and account                |
 
 # Improving the Framework
 You can improve the framework in too much ways:
