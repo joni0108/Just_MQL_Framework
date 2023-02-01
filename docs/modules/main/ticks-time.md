@@ -21,7 +21,7 @@ Returns the time of the candle in the selected symbol and timeframe and given po
 # Example
 Description of what does this example do.
 ```cpp
-//--- EXAMPLE OF METHOD __METHOD__ FROM CLASS __CLASS__ ---
+//--- EXAMPLE OF METHOD Time() FROM CLASS CTicks ---
 #property copyright "Just Up Corp"
 #property strict
 
