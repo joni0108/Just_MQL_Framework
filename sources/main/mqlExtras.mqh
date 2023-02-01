@@ -1,7 +1,7 @@
 //Conversion Functions
 string CharToStr(int char_code)
 {
-    return CharToString(char_code);
+    return CharToString((uchar)char_code);
 }
 
 string DoubleToStr(double value, int digits)
@@ -16,7 +16,7 @@ double StrToDouble(string value)
 
 int StrToInteger(string value)
 {
-    return StringToInteger(value);
+    return StringToInteger((long)value);
 }
 
 datetime StrToTime(string value)
