@@ -14,10 +14,11 @@
   - [Importing just a class](#importing-just-a-class)
     - [Pros and Cons of importing a module](#pros-and-cons-of-importing-a-module-1)
 - [Modules and Classes](#modules-and-classes)
+    - [Notes](#notes-2)
 - [Improving the Framework](#improving-the-framework)
   - [Reporting and Suggesting Guidelines](#reporting-and-suggesting-guidelines)
   - [Pull Request Guidelines](#pull-request-guidelines)
-    - [Notes](#notes-2)
+    - [Notes](#notes-3)
 
 # Installation
 You can choose between the `automatic` and `manual` installation methods.
@@ -103,14 +104,18 @@ In the following example, you will be including the whole `main` module, and the
 # Modules and Classes
 Below there is a list of the current modules and classes in this version release.
 
-| Modules | Sub-Modules                            | Description                                                                            |
-| :------ | :------------------------------------- | :------------------------------------------------------------------------------------- |
-| `Main`  |                                        | This module allows the full compatibility of MQL4 & MQL5 in one code.                  |
-| ->      | [Ticks](modules/main/ticks.md)         | Handle all the candlesticks informations                                               |
-| ->      | [Info](modules/main/info.md)           | Handle all the information of the terminal and account                                 |
-| ->      | [Arrays](modules/main/arrays.md)       | Handle all arrays functions that are not compatible between MQL4 and MQL5              |
-| ->      | [Symbol](modules/main/symbol.md)       | Handle all the symbol informations.                                                    |
-| ->      | [MqlExtras](modules/main/mqlextras.md) | Handle all the MQL4 and MQL5 functions that should not be included in a general class. |
+| Modules | Sub-Modules                                          | Description                                                                              |
+| :------ | :--------------------------------------------------- | :--------------------------------------------------------------------------------------- |
+| `Main`  |                                                      | This module allows the full compatibility of MQL4 & MQL5 in one code.                    |
+| ->      | [Ticks](modules/main/ticks.md)                       | Handle all the candlesticks informations                                                 |
+| ->      | [Info](modules/main/info.md)                         | Handle all the information of the terminal and account                                   |
+| ->      | [Arrays](modules/main/arrays.md)                     | Handle all arrays functions that are not compatible between MQL4 and MQL5                |
+| ->      | [Symbol](modules/main/symbol.md)                     | Handle all the symbol informations.                                                      |
+| ->      | [CustomIndicators](modules/main/customIndicators.md) | Handle all the custom indicators functions that are not compatible between MQL4 and MQL5 |
+| ->      | [MqlExtras](modules/main/mqlextras.md)               | Handle all the MQL4 and MQL5 functions that should not be included in a general class.   |
+
+### Notes
+1. For the `main` module we have used the article [Migrating from MQL4 to MQL5](https://www.mql5.com/en/articles/81) written by Sergey Pavlov as a reference.
 
 # Improving the Framework
 You can improve the framework in too much ways:

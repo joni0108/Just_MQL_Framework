@@ -5,6 +5,9 @@
 #ifndef MODE_DESCEND
     #define MODE_DESCEND 1
 #endif
+#ifndef EMPTY 
+    #define EMPTY -1
+#endif
 
 //--- Enumerations List
 enum E_CANDLE_MODE
