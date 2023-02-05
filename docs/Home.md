@@ -112,6 +112,7 @@ Below there is a list of the current modules and classes in this version release
 | ->      | [Arrays](modules/main/arrays.md)                     | Handle all arrays functions that are not compatible between MQL4 and MQL5                |
 | ->      | [Symbol](modules/main/symbol.md)                     | Handle all the symbol informations.                                                      |
 | ->      | [CustomIndicators](modules/main/customIndicators.md) | Handle all the custom indicators functions that are not compatible between MQL4 and MQL5 |
+| ->      | [DT](modules/main/dt.md)                             | Handle all the date and time functions that are not compatible between MQL4 and MQL5     |
 | ->      | [MqlExtras](modules/main/mqlextras.md)               | Handle all the MQL4 and MQL5 functions that should not be included in a general class.   |
 
 ### Notes

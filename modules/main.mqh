@@ -1,4 +1,4 @@
-//--- JUST MQL FRAMEWORK MAIN FILE ---
+//--- JUST MQL FRAMEWORK MAIN MODULE ---
 #define __FRAMEWORK_VERSION__ "3.0.0"
 #define __FRAMEWORK_VERSION_MAJOR__ 3
 #define __FRAMEWORK_NAME__ "Just MQL Framework"
@@ -16,3 +16,4 @@ To include other modules, use their respective files.
 #include "main/symbol.mqh"
 #include "main/mqlExtras.mqh"
 #include "main/customIndicators.mqh"
+#include "main/datetime.mqh"

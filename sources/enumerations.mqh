@@ -9,6 +9,9 @@
     #define EMPTY -1
 #endif
 
+#define TREND_BULLISH 1
+#define TREND_BEARISH -1
+
 //--- Enumerations List
 enum E_CANDLE_MODE
 {
