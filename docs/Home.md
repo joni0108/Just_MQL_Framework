@@ -114,6 +114,8 @@ Below there is a list of the current modules and classes in this version release
 | ->      | [CustomIndicators](modules/main/customIndicators.md) | Handle all the custom indicators functions that are not compatible between MQL4 and MQL5 |
 | ->      | [DT](modules/main/dt.md)                             | Handle all the date and time functions that are not compatible between MQL4 and MQL5     |
 | ->      | [MqlExtras](modules/main/mqlextras.md)               | Handle all the MQL4 and MQL5 functions that should not be included in a general class.   |
+| `Concepts` | | This module have some classes to handle trading modules.
+| -> | [Trend](modules/concepts/trend.md) | To handle market trends.
 
 ### Notes
 1. For the `main` module we have used the article [Migrating from MQL4 to MQL5](https://www.mql5.com/en/articles/81) written by Sergey Pavlov as a reference.

@@ -35,7 +35,7 @@ In this example we will initialize, use some methods, and destroy a class object
 #property strict
 
 //--- Including the framework/library ---
-#include <...>
+#include <Just_MQL_Framework/modules/main/arrays.mqh>
 
 //--- Creating the class objects ---
 CName name;
