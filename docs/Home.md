@@ -114,6 +114,11 @@ Below there is a list of the current modules and classes in this version release
 | ->      | [CustomIndicators](modules/main/customIndicators.md) | Handle all the custom indicators functions that are not compatible between MQL4 and MQL5 |
 | ->      | [DT](modules/main/dt.md)                             | Handle all the date and time functions that are not compatible between MQL4 and MQL5     |
 | ->      | [MqlExtras](modules/main/mqlextras.md)               | Handle all the MQL4 and MQL5 functions that should not be included in a general class.   |
+| `Terminal` | | A module to simulate the terminal handling as a human.|
+| -> | [NewOrder](modules/terminal/neworder.md) | Send orders manually using the terminal buttons.|
+| -> | [AutoTrading](modules/terminal/at.md) | Toggle the autotrading button.|
+| -> | [OneClick](modules/terminal/oct.md) | Send an order using the OneClick Trading window. |
+|-> | [KeyPressed](modules/terminal/keyPressed.md) | Return as a string any key pressed in the keyboard.
 | `Concepts` | | This module have some classes to handle trading modules.
 | -> | [Trend](modules/concepts/trend.md) | To handle market trends.
 
