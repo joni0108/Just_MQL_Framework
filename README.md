@@ -1,7 +1,7 @@
 # Just_MQL_Framework
 ![GitHub](https://img.shields.io/github/license/justupcorp/Just_MQL_Framework?color=blue)
 ![Repository Last Release](https://img.shields.io/github/v/release/justupcorp/Just_MQL_Framework?color=light_green)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/justupcorp/Just_MQL_Framework?label=download%20size)
+![GitHub code size in bytes](https://img.shields.io/github/repo-size/trollpro0108-code/Just_MQL_Framework?label=Files%20Size)
 <br>
 A cross-language framework that allows you to code your scripts and EAs only once and use it on both MT4 & MT5. <br>
 
