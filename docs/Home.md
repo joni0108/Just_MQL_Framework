@@ -104,23 +104,27 @@ In the following example, you will be including the whole `main` module, and the
 # Modules and Classes
 Below there is a list of the current modules and classes in this version release.
 
-| Modules | Sub-Modules                                          | Description                                                                              |
-| :------ | :--------------------------------------------------- | :--------------------------------------------------------------------------------------- |
-| `Main`  |                                                      | This module allows the full compatibility of MQL4 & MQL5 in one code.                    |
-| ->      | [Ticks](modules/main/ticks.md)                       | Handle all the candlesticks informations                                                 |
-| ->      | [Info](modules/main/info.md)                         | Handle all the information of the terminal and account                                   |
-| ->      | [Arrays](modules/main/arrays.md)                     | Handle all arrays functions that are not compatible between MQL4 and MQL5                |
-| ->      | [Symbol](modules/main/symbol.md)                     | Handle all the symbol informations.                                                      |
-| ->      | [CustomIndicators](modules/main/customIndicators.md) | Handle all the custom indicators functions that are not compatible between MQL4 and MQL5 |
-| ->      | [DT](modules/main/dt.md)                             | Handle all the date and time functions that are not compatible between MQL4 and MQL5     |
-| ->      | [MqlExtras](modules/main/mqlextras.md)               | Handle all the MQL4 and MQL5 functions that should not be included in a general class.   |
-| `Terminal` | | A module to simulate the terminal handling as a human.|
-| -> | [NewOrder](modules/terminal/neworder.md) | Send orders manually using the terminal buttons.|
-| -> | [AutoTrading](modules/terminal/at.md) | Toggle the autotrading button.|
-| -> | [OneClick](modules/terminal/oct.md) | Send an order using the OneClick Trading window. |
-|-> | [KeyPressed](modules/terminal/keyPressed.md) | Return as a string any key pressed in the keyboard.
-| `Concepts` | | This module have some classes to handle trading modules.
-| -> | [Trend](modules/concepts/trend.md) | To handle market trends.
+| Modules    | Sub-Modules                                          | Description                                                                              |
+| :--------- | :--------------------------------------------------- | :--------------------------------------------------------------------------------------- |
+| `Main`     |                                                      | This module allows the full compatibility of MQL4 & MQL5 in one code.                    |
+| ->         | [Ticks](modules/main/ticks.md)                       | Handle all the candlesticks informations                                                 |
+| ->         | [Info](modules/main/info.md)                         | Handle all the information of the terminal and account                                   |
+| ->         | [Arrays](modules/main/arrays.md)                     | Handle all arrays functions that are not compatible between MQL4 and MQL5                |
+| ->         | [Symbol](modules/main/symbol.md)                     | Handle all the symbol informations.                                                      |
+| ->         | [CustomIndicators](modules/main/customIndicators.md) | Handle all the custom indicators functions that are not compatible between MQL4 and MQL5 |
+| ->         | [DT](modules/main/dt.md)                             | Handle all the date and time functions that are not compatible between MQL4 and MQL5     |
+| ->         | [MqlExtras](modules/main/mqlextras.md)               | Handle all the MQL4 and MQL5 functions that should not be included in a general class.   |
+| `Terminal` |                                                      | A module to simulate the terminal handling as a human.                                   |
+| ->         | [NewOrder](modules/terminal/neworder.md)             | Send orders manually using the terminal buttons.                                         |
+| ->         | [AutoTrading](modules/terminal/at.md)                | Toggle the autotrading button.                                                           |
+| ->         | [OneClick](modules/terminal/oct.md)                  | Send an order using the OneClick Trading window.                                         |
+| ->         | [KeyPressed](modules/terminal/keyPressed.md)         | Return as a string any key pressed in the keyboard.                                      |
+| `Concepts` |                                                      | This module have some classes to handle trading modules.                                 |
+| ->         | [Trend](modules/concepts/trend.md)                   | To handle market trends.                                                                 |
+| `APIs`     |                                                      | This module allows the POST & GET connections to some APIs.                              |
+| ->         | [Discord](modules/apis/discord.md)                   | Allow sending embeded messages to a discord through a discord webhook                    |
+| ->         | [Telegram](modules/apis/telegram.md)                 | Allows sending messages and images to a telegram channel or group using a telegram bot   |
+
 
 ### Notes
 1. For the `main` module we have used the article [Migrating from MQL4 to MQL5](https://www.mql5.com/en/articles/81) written by Sergey Pavlov as a reference.
